@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>OBAID-01 // SVC-MANUAL [REV. A] - Syed Obaid Ali | Portfolio</title>
+  <meta name="description" content="Official technical service manual and portfolio of Syed Obaid Ali - Computer Science student, full-stack software developer, and pharmacy systems specialist."/>
+
+  <!-- Google Fonts: Space Grotesk, Space Mono, IBM Plex Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "canvas-bg": "var(--bg-color)",
+            "canvas-surface": "var(--surface-color)",
+            "canvas-surface-high": "var(--surface-high)",
+            "canvas-surface-low": "var(--surface-low)",
+            "canvas-ink": "var(--ink-color)",
+            "canvas-ink-muted": "var(--ink-muted)",
+            "canvas-accent": "var(--accent-color)",
+            "canvas-accent-glow": "var(--accent-glow)",
+            "canvas-border": "var(--border-color)",
+            "canvas-cyan": "#00f0ff",
+            "canvas-amber": "#ffb400"
+          },
+          fontFamily: {
+            "spec-code": ["Space Mono", "monospace"],
+            "headline": ["Space Grotesk", "sans-serif"],
+            "body": ["IBM Plex Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* ================= THEME COLOR TOKENS ================= */
+    :root {
+      --bg-color: #f2eee6;
+      --surface-color: #fcf9f2;
+      --surface-high: #eae5da;
+      --surface-low: #f7f4ec;
+      --ink-color: #15171a;
+      --ink-muted: #606266;
+      --accent-color: #ff5419;
+      --accent-glow: rgba(255, 84, 25, 0.25);
+      --border-color: #15171a;
+      --grid-dot: #cac4b7;
+      --shadow-hard: 3px 3px 0px 0px #15171a;
+      --shadow-hard-lg: 5px 5px 0px 0px #15171a;
+      --scanline-opacity: 0.04;
+    }
+
+    /* CYBER HUD / NIGHT-OPS THEME */
+    html.theme-cyber {
+      --bg-color: #090a0f;
+      --surface-color: #10121a;
+      --surface-high: #1a1e2b;
+      --surface-low: #0c0e14;
+      --ink-color: #e6ecf5;
+      --ink-muted: #8b95a5;
+      --accent-color: #00f0ff;
+      --accent-glow: rgba(0, 240, 255, 0.35);
+      --border-color: #00f0ff;
+      --grid-dot: #1b2738;
+      --shadow-hard: 3px 3px 0px 0px #00f0ff;
+      --shadow-hard-lg: 5px 5px 0px 0px #00f0ff;
+      --scanline-opacity: 0.12;
+    }
+
+    /* AMBER CRT VINTAGE TERMINAL THEME */
+    html.theme-amber {
+      --bg-color: #0d0a02;
+      --surface-color: #171205;
+      --surface-high: #241c09;
+      --surface-low: #100d04;
+      --ink-color: #ffb400;
+      --ink-muted: #a67c15;
+      --accent-color: #ff9100;
+      --accent-glow: rgba(255, 180, 0, 0.35);
+      --border-color: #ffb400;
+      --grid-dot: #332607;
+      --shadow-hard: 3px 3px 0px 0px #ffb400;
+      --shadow-hard-lg: 5px 5px 0px 0px #ffb400;
+      --scanline-opacity: 0.15;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--ink-color);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Drafting blueprint dot grid */
+    .drafting-grid {
+      background-size: 24px 24px;
+      background-image: radial-gradient(circle, var(--grid-dot) 1.2px, transparent 1.2px);
+    }
+
+    /* CRT Scanline Overlay */
+    .scanlines::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: var(--scanline-opacity);
+    }
+
+    /* Hard Technical Box Shadows */
+    .tech-shadow {
+      box-shadow: var(--shadow-hard);
+    }
+    .tech-shadow-lg {
+      box-shadow: var(--shadow-hard-lg);
+    }
+    .tech-shadow-hover:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px 0px var(--border-color);
+    }
+
+    /* Corner Rivet Mark */
+    .rivet {
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      position: relative;
+      background: var(--surface-high);
+      flex-shrink: 0;
+    }
+    .rivet::after {
+      content: '';
+      position: absolute;
+      top: 2.5px;
+      left: 1.5px;
+      width: 4px;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    /* Barcode Lines */
+    .barcode-line {
+      display: inline-block;
+      height: 100%;
+      background-color: var(--border-color);
+    }
+
+    /* Precision Blueprint Crosshair Cursor */
+    #blueprint-crosshair {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s;
+    }
+
+    /* Scroll reveal animations */
+    .rv {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .rv.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv,
+      .rv.in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* Holographic Shimmer Card */
+    .holo-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .holo-card::after {
+      content: '';
+      position: absolute;
+      top: -150%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.2) 45%,
+        var(--accent-glow) 50%,
+        rgba(255, 255, 255, 0.2) 55%,
+        transparent 70%
+      );
+      transform: rotate(25deg);
+      pointer-events: none;
+      transition: transform 0.8s ease;
+    }
+    .holo-card:hover::after {
+      transform: translateY(120%) rotate(25deg);
+    }
+
+    /* CRT Screen Glow on 3D Container */
+    #robot3d-wrap {
+      position: relative;
+      border: 2px solid var(--border-color);
+      background: var(--surface-high);
+      overflow: hidden;
+    }
+    #robot3d {
+      width: 100%;
+      height: 420px;
+      cursor: grab;
+      touch-action: pan-y;
+      display: block;
+    }
+    #robot3d:active {
+      cursor: grabbing;
+    }
+
+    /* Pulse Glow */
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 10px var(--accent-glow); }
+      50% { box-shadow: 0 0 25px var(--accent-color); }
+    }
+    .glow-pulse {
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    /* Terminal Window Styling */
+    #terminal-overlay {
+      display: none;
+    }
+    #terminal-overlay.open {
+      display: flex;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--surface-low);
+      border-left: 1px solid var(--border-color);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-color);
+    }
+  </style>
+</head>
+
+<body class="selection:bg-canvas-accent selection:text-black font-body text-[13px] leading-relaxed antialiased">
+
+  <!-- ================= VIRTUAL BLUEPRINT CROSSHAIR ================= -->
+  <div id="blueprint-crosshair" class="hidden md:flex flex-col items-center pointer-events-none">
+    <div class="relative w-8 h-8 flex items-center justify-center">
+      <div class="absolute w-full h-[1px] bg-canvas-accent opacity-70"></div>
+      <div class="absolute h-full w-[1px] bg-canvas-accent opacity-70"></div>
+      <div class="w-3 h-3 border border-canvas-accent rounded-full opacity-90 animate-ping"></div>
+    </div>
+    <div id="crosshair-coords" class="mt-1 px-1.5 py-0.5 bg-canvas-ink text-canvas-surface text-[9px] font-spec-code border border-canvas-border opacity-80 whitespace-nowrap">
+      X: 000 | Y: 000
+    </div>
+  </div>
+
+  <!-- ================= TOP DOCKED APP BAR & HUD ================= -->
+  <header class="sticky top-0 z-50 bg-canvas-surface border-b-2 border-canvas-border w-full select-none">
+    <div class="flex justify-between items-center w-full px-3 md:px-5 h-12">
+      
+      <!-- Brand & Specification ID -->
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <div class="flex items-center space-x-1.5">
+          <span class="w-2.5 h-2.5 bg-canvas-accent inline-block animate-pulse"></span>
+          <a href="#ch-00" class="text-sm md:text-base font-headline font-bold tracking-tight uppercase hover:text-canvas-accent transition-colors flex items-center gap-1.5">
+            <span>OBAID-01</span>
+            <span class="text-canvas-ink-muted hidden sm:inline">// SVC-MANUAL</span>
+          </a>
+        </div>
+        <span class="border border-canvas-border px-1.5 py-0.2 text-[10px] font-spec-code bg-canvas-surface-high font-bold">
+          [REV A.4]
+        </span>
+        <span id="system-clock" class="hidden xl:inline-block font-spec-code text-[11px] text-canvas-ink-muted px-2 py-0.5 border border-canvas-border/40">
+          UTC: 00:00:00
+        </span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-1" id="top-nav-links" aria-label="Primary Chapters">
+        <a class="top-nav-link text-canvas-ink bg-canvas-surface-high border-b-2 border-canvas-accent px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider font-bold transition-all" data-top-target="ch-00" href="#ch-00">
+          00. OVERVIEW
+        </a>
+        <a class="top-nav-link text-canvas-ink-muted hover:text-canvas-ink hover:bg-canvas-surface-high px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider transition-all" data-top-target="ch-01" href="#ch-01">
+          01. SPEC
+        </a>
+        <a class="top-nav-link text-canvas-ink-muted hover:text-canvas-ink hover:bg-canvas-surface-high px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider transition-all" data-top-target="ch-02" href="#ch-02">
+          02. PARTS (BOM)
+        </a>
+        <a class="top-nav-link text-canvas-ink-muted hover:text-canvas-ink hover:bg-canvas-surface-high px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider transition-all" data-top-target="ch-03" href="#ch-03">
+          03. MODULES
+        </a>
+        <a class="top-nav-link text-canvas-ink-muted hover:text-canvas-ink hover:bg-canvas-surface-high px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider transition-all" data-top-target="ch-04" href="#ch-04">
+          04. REVISION
+        </a>
+        <a class="top-nav-link text-canvas-ink-muted hover:text-canvas-ink hover:bg-canvas-surface-high px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider transition-all" data-top-target="ch-05" href="#ch-05">
+          05. COMMS
+        </a>
+      </nav>
+
+      <!-- Action Cluster: Theme Switcher, Audio FX, Diagnostic Terminal, Print -->
+      <div class="flex items-center space-x-1.5 md:space-x-2 font-spec-code text-[10px]">
+        
+        <!-- Audio Synth FX Toggle -->
+        <button id="sfx-toggle-btn" class="flex items-center space-x-1 px-2 py-1 border border-canvas-border bg-canvas-surface hover:bg-canvas-surface-high transition-colors" title="Toggle Synthesized Mechanical Retro Audio Effects">
+          <span class="material-symbols-outlined text-[13px]" id="sfx-icon">volume_off</span>
+          <span class="hidden sm:inline font-bold" id="sfx-label">SFX: OFF</span>
+        </button>
+
+        <!-- Theme Mode Switcher (Manual Paper -> Cyber HUD -> Amber CRT) -->
+        <button id="theme-cycle-btn" class="flex items-center space-x-1 px-2 py-1 border border-canvas-border bg-canvas-surface hover:bg-canvas-surface-high transition-colors font-bold" title="Switch Visual Mode (Paper Blueprint / Cyber Night-Ops / Amber CRT)">
+          <span class="material-symbols-outlined text-[13px] text-canvas-accent">palette</span>
+          <span id="theme-btn-label">PAPER</span>
+        </button>
+
+        <!-- Interactive Diagnostic Terminal Button -->
+        <button id="open-terminal-btn" class="flex items-center space-x-1 px-2.5 py-1 border border-canvas-border bg-canvas-ink text-canvas-surface hover:bg-canvas-accent hover:text-black font-bold transition-all tech-shadow" title="Launch Interactive Diagnostic Shell">
+          <span class="material-symbols-outlined text-[13px]">terminal</span>
+          <span class="hidden sm:inline">TERMINAL</span>
+        </button>
+
+        <!-- Print Schematic -->
+        <button onclick="window.print()" class="hidden md:inline-flex items-center px-2 py-1 border border-canvas-border bg-canvas-surface hover:bg-canvas-surface-high transition-colors" title="Print Technical Blueprint">
+          <span class="material-symbols-outlined text-[13px] mr-1">print</span>
+          PRINT
+        </button>
+
+        <!-- Official Seal Badge -->
+        <a href="#ch-05" class="p-1 border border-canvas-border hover:bg-canvas-accent hover:text-black transition-colors" title="Operator Identification">
+          <span class="material-symbols-outlined text-[16px] block">badge</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MASTER OUTER VIEWPORT FRAME WITH DRAFTING CROSSES ================= -->
+  <div class="min-h-screen relative border-x-2 border-canvas-border max-w-[1480px] mx-auto bg-canvas-bg drafting-grid scanlines">
+    
+    <!-- Registration Corner Marks (+) -->
+    <div class="absolute top-2 left-2 text-canvas-ink font-spec-code text-[10px] select-none pointer-events-none opacity-60">+ 00.00 [ORIGIN]</div>
+    <div class="absolute top-2 right-2 text-canvas-ink font-spec-code text-[10px] select-none pointer-events-none opacity-60">+ 00.99 [FRAME_R]</div>
+    <div class="absolute bottom-2 left-2 text-canvas-ink font-spec-code text-[10px] select-none pointer-events-none opacity-60">+ 99.00 [FRAME_B]</div>
+    <div class="absolute bottom-2 right-2 text-canvas-ink font-spec-code text-[10px] select-none pointer-events-none opacity-60">+ 99.99 [TERMINAL]</div>
+
+    <!-- MAIN TWO-PANEL WORKBENCH LAYOUT -->
+    <div class="flex flex-col md:flex-row min-h-screen">
+      
+      <!-- ================= LEFT DOCKED NAV-DRAWER ================= -->
+      <aside class="w-full md:w-64 flex-shrink-0 bg-canvas-surface-low border-b-2 md:border-b-0 md:border-r-2 border-canvas-border flex flex-col justify-between p-0 md:sticky md:top-12 md:h-[calc(100vh-48px)] z-30 select-none" aria-label="System Documentation Controller">
+        
+        <!-- Drawer Header -->
+        <div>
+          <div class="p-3.5 border-b-2 border-canvas-border bg-canvas-surface">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-headline font-bold uppercase tracking-wider text-canvas-ink">SYS-DOC CONTROLLER</span>
+              <div class="rivet"></div>
+            </div>
+            <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-1.5 flex items-center justify-between">
+              <span>SN: 8084-AX // REV A</span>
+              <span class="text-[9px] bg-canvas-accent text-black font-bold px-1.5 py-0.2 border border-canvas-border" id="active-ch-pill">
+                CH 00
+              </span>
+            </div>
+          </div>
+
+          <!-- Drawer Navigation Items -->
+          <nav class="py-2" id="sidebar-nav" aria-label="Sidebar Chapters">
+            <a class="sidebar-ch-item bg-canvas-ink text-canvas-surface border-l-4 border-canvas-accent font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase transition-all" data-chapter-id="ch-00" href="#ch-00">
+              <span class="flex items-center"><span class="material-symbols-outlined text-[15px] mr-2">memory</span>CH 00: OVERVIEW</span>
+              <span class="active-indicator text-canvas-accent font-bold text-xs">◀</span>
+            </a>
+            <a class="sidebar-ch-item text-canvas-ink hover:bg-canvas-surface-high font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase border-l-4 border-transparent transition-all" data-chapter-id="ch-01" href="#ch-01">
+              <span class="flex items-center"><span class="material-symbols-outlined text-[15px] mr-2">precision_manufacturing</span>CH 01: SPEC &amp; BIO</span>
+              <span class="active-indicator hidden text-canvas-accent font-bold text-xs">◀</span>
+            </a>
+            <a class="sidebar-ch-item text-canvas-ink hover:bg-canvas-surface-high font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase border-l-4 border-transparent transition-all" data-chapter-id="ch-02" href="#ch-02">
+              <span class="flex items-center"><span class="material-symbols-outlined text-[15px] mr-2">build</span>CH 02: PARTS (BOM)</span>
+              <span class="active-indicator hidden text-canvas-accent font-bold text-xs">◀</span>
+            </a>
+            <a class="sidebar-ch-item text-canvas-ink hover:bg-canvas-surface-high font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase border-l-4 border-transparent transition-all" data-chapter-id="ch-03" href="#ch-03">
+              <span class="flex items-center"><span class="material-symbols-outlined text-[15px] mr-2">developer_board</span>CH 03: SUB-MODULES</span>
+              <span class="active-indicator hidden text-canvas-accent font-bold text-xs">◀</span>
+            </a>
+            <a class="sidebar-ch-item text-canvas-ink hover:bg-canvas-surface-high font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase border-l-4 border-transparent transition-all" data-chapter-id="ch-04" href="#ch-04">
+              <span class="flex items-center"><span class="material-symbols-outlined text-[15px] mr-2">history_edu</span>CH 04: FIELD LOG</span>
+              <span class="active-indicator hidden text-canvas-accent font-bold text-xs">◀</span>
+            </a>
+            <a class="sidebar-ch-item text-canvas-ink hover:bg-canvas-surface-high font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase border-l-4 border-transparent transition-all" data-chapter-id="ch-05" href="#ch-05">
+              <span class="flex items-center"><span class="material-symbols-outlined text-[15px] mr-2">send</span>CH 05: COMMS &amp; DISPATCH</span>
+              <span class="active-indicator hidden text-canvas-accent font-bold text-xs">◀</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Telemetry Status Card in Sidebar -->
+        <div class="p-3 border-y border-canvas-border bg-canvas-surface m-2 text-xs">
+          <div class="text-[10px] font-spec-code text-canvas-accent uppercase font-bold tracking-wider mb-1 flex items-center justify-between">
+            <span>▲ OPERATOR STATUS</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </div>
+          <p class="font-spec-code text-[11px] leading-tight text-canvas-ink">
+            OPEN TO INTERNSHIPS &amp; JUNIOR ROLES
+          </p>
+          <div class="mt-2 pt-2 border-t border-canvas-border/30 flex justify-between text-[10px] font-spec-code text-canvas-ink-muted">
+            <span>LOCATION: ISB, PK</span>
+            <span class="text-canvas-accent font-bold">ACTIVE</span>
+          </div>
+        </div>
+
+        <!-- Quick Launch CTA Footer in Sidebar -->
+        <div class="border-t-2 border-canvas-border bg-canvas-surface p-3 space-y-2">
+          <button onclick="document.getElementById('open-terminal-btn').click()" class="w-full block text-center bg-canvas-ink text-canvas-surface font-spec-code text-xs py-2 px-2 uppercase border border-canvas-border hover:bg-canvas-accent hover:text-black transition-all font-bold tech-shadow">
+            &gt;_ EXECUTE TERMINAL
+          </button>
+          <a class="w-full flex items-center justify-center text-center bg-canvas-surface-high hover:bg-canvas-surface text-canvas-ink font-spec-code text-xs py-1.5 px-2 uppercase border border-canvas-border transition-colors font-bold" href="assets/Syed_Obaid_Ali_Resume.pdf" target="_blank" rel="noopener">
+            <span class="material-symbols-outlined text-[14px] mr-1">download</span> RESUME [PDF]
+          </a>
+        </div>
+      </aside>
+
+      <!-- ================= FLOATING QUICK-JUMP TELEMETRY DOCK ================= -->
+      <aside class="fixed bottom-4 right-4 z-40 flex flex-col items-end pointer-events-auto select-none font-spec-code" id="quick-jump-drawer" aria-label="Quick Jump Telemetry Dock">
+        <div class="bg-canvas-surface border-2 border-canvas-border tech-shadow-lg p-3 mb-2 w-72 max-w-[90vw] transition-all duration-200 block" id="chapter-drawer-body">
+          <div class="flex justify-between items-center border-b border-canvas-border pb-1.5 mb-2 bg-canvas-surface-high px-2 py-1">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+              <span class="text-[10px] font-bold text-canvas-ink uppercase tracking-wider">NAV // TELEMETRY DOCK</span>
+            </div>
+            <span class="text-[9px] text-canvas-ink-muted">OBAID-01</span>
+          </div>
+          <p class="text-[10px] text-canvas-ink-muted mb-2 px-1 flex justify-between items-center">
+            <span>TRACK: <strong class="text-canvas-ink font-bold" id="quick-jump-current-title">CH 00: OVERVIEW</strong></span>
+            <span class="text-canvas-accent font-bold">[SYNCED]</span>
+          </p>
+          <div class="grid grid-cols-2 gap-1.5" id="quick-jump-grid">
+            <a class="drawer-jump-item border-2 border-canvas-border bg-canvas-ink text-canvas-surface px-2 py-1.5 text-[10px] uppercase flex items-center justify-between font-bold" data-drawer-target="ch-00" href="#ch-00">
+              <span>00: COVER</span>
+              <span class="drawer-badge text-[9px] bg-canvas-accent text-black font-bold px-1">[00]</span>
+            </a>
+            <a class="drawer-jump-item border border-canvas-border bg-canvas-surface-low hover:bg-canvas-accent hover:text-black px-2 py-1.5 text-[10px] uppercase text-canvas-ink flex items-center justify-between" data-drawer-target="ch-01" href="#ch-01">
+              <span>01: SPEC</span>
+              <span class="drawer-badge text-[9px] text-canvas-accent">[TS]</span>
+            </a>
+            <a class="drawer-jump-item border border-canvas-border bg-canvas-surface-low hover:bg-canvas-accent hover:text-black px-2 py-1.5 text-[10px] uppercase text-canvas-ink flex items-center justify-between" data-drawer-target="ch-02" href="#ch-02">
+              <span>02: PARTS</span>
+              <span class="drawer-badge text-[9px] text-canvas-accent">[BOM]</span>
+            </a>
+            <a class="drawer-jump-item border border-canvas-border bg-canvas-surface-low hover:bg-canvas-accent hover:text-black px-2 py-1.5 text-[10px] uppercase text-canvas-ink flex items-center justify-between" data-drawer-target="ch-03" href="#ch-03">
+              <span>03: MODULES</span>
+              <span class="drawer-badge text-[9px] text-canvas-accent">[MOD]</span>
+            </a>
+            <a class="drawer-jump-item border border-canvas-border bg-canvas-surface-low hover:bg-canvas-accent hover:text-black px-2 py-1.5 text-[10px] uppercase text-canvas-ink flex items-center justify-between" data-drawer-target="ch-04" href="#ch-04">
+              <span>04: LOG</span>
+              <span class="drawer-badge text-[9px] text-canvas-accent">[LOG]</span>
+            </a>
+            <a class="drawer-jump-item border border-canvas-border bg-canvas-surface-low hover:bg-canvas-accent hover:text-black px-2 py-1.5 text-[10px] uppercase text-canvas-ink flex items-center justify-between" data-drawer-target="ch-05" href="#ch-05">
+              <span>05: COMMS</span>
+              <span class="drawer-badge text-[9px] text-canvas-accent">[DIR]</span>
+            </a>
+          </div>
+          <div class="mt-2 pt-1.5 border-t border-canvas-border/30 flex justify-between items-center text-[9px] text-canvas-ink-muted px-1">
+            <span>STATUS: <strong class="text-canvas-ink" id="tracking-status-text">LOCKED CH-00</strong></span>
+            <span class="text-canvas-accent font-bold">60 FPS // READY</span>
+          </div>
+        </div>
+
+        <button class="flex items-center space-x-2 bg-canvas-ink text-canvas-surface border-2 border-canvas-border tech-shadow hover:bg-canvas-accent hover:text-black text-xs uppercase font-bold py-1.5 px-3 tracking-wider transition-all" onclick="var b = document.getElementById('chapter-drawer-body'); var s = document.getElementById('drawer-toggle-state'); if(b.style.display==='none'){b.style.display='block';s.innerText='[-] HIDE';}else{b.style.display='none';s.innerText='[+] QUICK-JUMP';}">
+          <span class="material-symbols-outlined text-[15px]">alt_route</span>
+          <span id="drawer-toggle-state">[-] HIDE</span>
+          <span class="bg-canvas-accent text-black text-[9px] px-1 py-0.2 border border-canvas-border font-bold" id="drawer-current-badge">CH 00</span>
+        </button>
+      </aside>
+
+      <!-- ================= MAIN TECHNICAL SHEET / CHAPTER CONTENT ================= -->
+      <main class="flex-1 p-3 md:p-6 lg:p-8 space-y-10 overflow-hidden">
+
+        <!-- ================= 00. CHAPTER 00: HEADER & COVER (HERO WORKBENCH) ================= -->
+        <section class="chapter-section border-2 border-canvas-border bg-canvas-surface p-4 md:p-6 relative scroll-mt-16 tech-shadow-lg" id="ch-00">
+          
+          <!-- Frame Header Bar -->
+          <div class="flex flex-wrap items-center justify-between border-b-2 border-canvas-border pb-3 mb-6 gap-2">
+            <div class="flex items-center space-x-2">
+              <div class="rivet"></div>
+              <span class="font-spec-code text-[11px] uppercase tracking-wider text-canvas-ink-muted">
+                SECTION REF // 00-SHEET-FRONTISPIECE
+              </span>
+            </div>
+            <!-- REV Rubber Stamp -->
+            <div class="border-2 border-canvas-accent px-3 py-0.5 text-canvas-accent font-spec-code text-xs tracking-widest uppercase font-bold bg-canvas-surface-high rotate-[-1deg]">
+              REV A // OFFICIAL SPECIFICATION
+            </div>
+          </div>
+
+          <!-- Hero Grid: Data left, 3D Exploded Interactive Drawing right -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-5 space-y-4">
+              <div class="inline-block border border-canvas-border px-2 py-0.5 text-[10px] font-spec-code bg-canvas-surface-high font-bold text-canvas-ink uppercase">
+                SPEC: COMPUTER SCIENCE STUDENT &amp; DEVELOPER
+              </div>
+
+              <div>
+                <h1 class="text-3xl md:text-5xl font-headline font-extrabold text-canvas-ink leading-tight uppercase tracking-tight">
+                  OBAID-01 SERVICE MANUAL
+                </h1>
+                <div class="text-xl font-headline font-bold text-canvas-accent mt-1 flex items-center gap-2">
+                  <span>Syed Obaid Ali</span>
+                  <span class="text-xs px-2 py-0.5 border border-canvas-border bg-canvas-surface text-canvas-ink font-spec-code font-normal">BSCS @ Abasyn</span>
+                </div>
+                <p class="font-body text-sm text-canvas-ink-muted mt-2 leading-relaxed">
+                  Computer Science undergraduate (5th Sem) combining <strong>8 years of work in pharmacies</strong> with modern web systems, database design, and web application development.
+                </p>
+              </div>
+
+              <!-- Tagline in Technical Block -->
+              <div class="border-l-4 border-canvas-accent pl-3 py-1.5 bg-canvas-surface-high">
+                <p class="font-body text-xs italic text-canvas-ink font-medium">
+                  "Assembled from real-world problem solving."
+                </p>
+              </div>
+
+              <!-- Holographic Operator ID Badge Frame -->
+              <div class="holo-card border-2 border-canvas-border p-2 bg-canvas-surface-low max-w-[240px] tech-shadow">
+                <div class="flex justify-between items-center text-[10px] font-spec-code mb-1 text-canvas-ink-muted">
+                  <span class="font-bold text-canvas-ink">PHOTO IDENT</span>
+                  <span>FIG. A-1 // VERIFIED</span>
+                </div>
+                <div class="relative overflow-hidden border border-canvas-border bg-black">
+                  <img src="assets/photo.png" alt="Pixel portrait of Syed Obaid Ali" class="w-full h-auto block filter contrast-105" style="image-rendering: pixelated;"/>
+                  <!-- Scanning Laser Line Animation -->
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-canvas-accent/30 to-transparent w-full h-6 animate-bounce pointer-events-none"></div>
+                </div>
+                <div class="text-center text-[10px] font-spec-code uppercase tracking-wider text-canvas-ink font-bold mt-1.5 flex justify-between items-center px-1">
+                  <span>OPERATOR: OBAID</span>
+                  <span class="text-canvas-accent">● AUTH_OK</span>
+                </div>
+              </div>
+
+              <!-- CTA Action Buttons -->
+              <div class="flex flex-wrap gap-2.5 pt-2 font-spec-code text-xs">
+                <a class="px-4 py-2.5 bg-canvas-accent text-black font-bold uppercase tracking-wider border-2 border-canvas-border hover:bg-canvas-ink hover:text-canvas-surface transition-all tech-shadow flex items-center gap-1.5" href="#ch-03">
+                  <span class="material-symbols-outlined text-[16px]">rocket_launch</span>
+                  INSPECT MODULES
+                </a>
+                <a class="px-4 py-2.5 bg-canvas-surface text-canvas-ink font-bold uppercase tracking-wider border-2 border-canvas-border hover:bg-canvas-surface-high transition-all flex items-center gap-1.5" href="assets/Syed_Obaid_Ali_Resume.pdf" target="_blank" rel="noopener">
+                  <span class="material-symbols-outlined text-[16px]">file_download</span>
+                  RESUME [PDF]
+                </a>
+                <button onclick="document.getElementById('open-terminal-btn').click()" class="px-3 py-2.5 bg-canvas-surface-high text-canvas-ink font-bold uppercase border-2 border-canvas-border hover:bg-canvas-ink hover:text-canvas-surface transition-all" title="Open Terminal">
+                  &gt;_ CLI
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right 3D Exploded Interactive Schematic Workbench -->
+            <div class="lg:col-span-7 border-2 border-canvas-border bg-canvas-surface-high p-3 md:p-4 relative tech-shadow">
+              
+              <div class="flex flex-wrap justify-between items-center border-b border-canvas-border pb-2 mb-2 font-spec-code text-[11px] text-canvas-ink">
+                <div class="flex items-center space-x-2">
+                  <span class="w-2 h-2 rounded-full bg-canvas-accent animate-ping"></span>
+                  <span class="font-bold">3D CHASSIS ENGINE: OBAID-01 DROID CORE</span>
+                </div>
+                <span class="text-canvas-ink-muted text-[10px]">REAL-TIME WEBGL RENDERING</span>
+              </div>
+
+              <!-- 3D Viewport Host Container -->
+              <div id="robot3d-wrap">
+                <div id="robot3d"></div>
+                <!-- Interactive Controls Bar inside Canvas -->
+                <div class="absolute bottom-2 left-2 right-2 flex flex-wrap justify-between items-center gap-1.5 pointer-events-auto bg-canvas-surface/90 border border-canvas-border p-1.5 font-spec-code text-[10px]">
+                  <div class="flex items-center space-x-1">
+                    <button id="btn-3d-explode" class="px-2 py-1 bg-canvas-accent text-black font-bold uppercase border border-canvas-border hover:opacity-90">
+                      💥 EXPLODE
+                    </button>
+                    <button id="btn-3d-assemble" class="px-2 py-1 bg-canvas-surface text-canvas-ink font-bold uppercase border border-canvas-border hover:bg-canvas-surface-high">
+                      🧩 ASSEMBLE
+                    </button>
+                    <button id="btn-3d-wireframe" class="px-2 py-1 bg-canvas-surface text-canvas-ink font-bold uppercase border border-canvas-border hover:bg-canvas-surface-high">
+                      📐 WIREFRAME
+                    </button>
+                    <button id="btn-3d-spin" class="px-2 py-1 bg-canvas-surface text-canvas-ink font-bold uppercase border border-canvas-border hover:bg-canvas-surface-high">
+                      🔄 AUTO-SPIN
+                    </button>
+                  </div>
+                  <div class="text-[9px] text-canvas-ink-muted hidden sm:block">
+                    [DRAG / TOUCH TO ROTATE]
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fallback SVG Technical Linework (if WebGL disabled) -->
+              <div id="robotSvg" class="w-full hidden items-center justify-center p-2">
+                <p class="font-spec-code text-xs text-canvas-ink-muted">Schematic linework active.</p>
+              </div>
+
+              <!-- Figure Technical Label & Telemetry Stats -->
+              <div class="mt-2.5 pt-2 border-t border-canvas-border/30 flex flex-wrap justify-between items-center font-spec-code text-[10px] text-canvas-ink-muted">
+                <span>FIG. 00: OBAID-01 MODULAR ROBOTIC CORE</span>
+                <span id="robot-live-telemetry" class="text-canvas-accent font-bold">CORE_STATE: STABLE // TEMP: 37.4°C</span>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= 01. CHAPTER 1: SPECIFICATIONS & HUMAN CALIBRATION ================= -->
+        <section class="chapter-section rv border-2 border-canvas-border bg-canvas-surface p-4 md:p-6 scroll-mt-16 tech-shadow-lg" id="ch-01">
+          <div class="flex items-center justify-between border-b-2 border-canvas-border pb-2 mb-4">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+              <h2 class="text-base md:text-lg font-headline font-bold uppercase text-canvas-ink tracking-wide">
+                CH. 01 // OPERATOR SPECIFICATIONS &amp; BIO-CALIBRATION
+              </h2>
+            </div>
+            <span class="font-spec-code text-[11px] text-canvas-ink-muted">
+              SEC ID: 100-TS
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Technical Spec Parameter Table -->
+            <div class="lg:col-span-7">
+              <div class="border-2 border-canvas-border bg-canvas-surface-low">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="bg-canvas-surface-high border-b-2 border-canvas-border">
+                      <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink border-r-2 border-canvas-border w-1/3">SYSTEM PARAMETER</th>
+                      <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink">FIELD CALIBRATION VALUE</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y border-canvas-border font-spec-code text-xs">
+                    <tr>
+                      <td class="p-2.5 bg-canvas-surface font-bold text-canvas-ink border-r border-canvas-border">Full Name:</td>
+                      <td class="p-2.5 text-canvas-ink font-semibold flex items-center justify-between">
+                        <span>Syed Obaid Ali</span>
+                        <span class="text-[10px] text-canvas-ink-muted">[OP-01]</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-2.5 bg-canvas-surface font-bold text-canvas-ink border-r border-canvas-border">Geographic Station:</td>
+                      <td class="p-2.5 text-canvas-ink">Islamabad, Pakistan (UTC+5)</td>
+                    </tr>
+                    <tr>
+                      <td class="p-2.5 bg-canvas-surface font-bold text-canvas-ink border-r border-canvas-border">Academic Accreditation:</td>
+                      <td class="p-2.5 text-canvas-ink">
+                        BS Computer Science, Abasyn University (5th Semester)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-2.5 bg-canvas-surface font-bold text-canvas-ink border-r border-canvas-border">Operational Communication:</td>
+                      <td class="p-2.5 text-canvas-ink">Urdu (Native), English (good)</td>
+                    </tr>
+                    <tr>
+                      <td class="p-2.5 bg-canvas-surface font-bold text-canvas-ink border-r border-canvas-border">Domain Operations Experience:</td>
+                      <td class="p-2.5 text-canvas-ink font-bold text-canvas-accent">
+                        8 Years Active Service in Pharmacy &amp; Medical Operations
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-2.5 bg-canvas-surface font-bold text-canvas-ink border-r border-canvas-border">Primary Development Stack:</td>
+                      <td class="p-2.5 text-canvas-ink">Python, Flask, MySQL, React Native, Express, Tailwind</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Bio-Calibration Deep Dive (Why 8 Years Pharmacy Matters!) -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+              <div class="border-2 border-canvas-border p-4 bg-canvas-surface-high relative tech-shadow">
+                <div class="text-[11px] font-spec-code uppercase font-bold text-canvas-accent mb-2 flex items-center justify-between">
+                  <span class="flex items-center"><span class="inline-block w-2 h-2 bg-canvas-accent mr-2"></span>BIO-CALIBRATION ENTRY</span>
+                  <span class="text-[9px] border border-canvas-border px-1 bg-canvas-surface">REF: 8084-LOG</span>
+                </div>
+                <p class="font-body text-sm text-canvas-ink leading-relaxed">
+                  "I have worked in pharmacies for 8 years, checking prescriptions and handling stock. I saw the daily problems firsthand. That pushed me towards Computer Science and inspired SehatHub."
+                </p>
+                <div class="mt-4 pt-2 border-t border-canvas-border/30 flex justify-between items-center text-[10px] font-spec-code text-canvas-ink-muted">
+                  <span>PHARMACY WORK: 8 YRS</span>
+                  <span class="text-canvas-ink font-bold">SOFTWARE DISCIPLINE: ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Reliability & Mission Readiness Checkplate -->
+              <div class="border-2 border-canvas-border p-3 bg-canvas-surface flex items-center justify-between">
+                <div>
+                  <div class="text-[11px] font-spec-code font-bold uppercase text-canvas-ink">MISSION READINESS STATUS</div>
+                  <div class="text-[10px] font-spec-code text-canvas-ink-muted">SYSTEM INTEGRITY 100% // ALL SUBSYSTEMS NOMINAL</div>
+                </div>
+                <span class="px-2.5 py-1 bg-canvas-accent text-black font-spec-code text-xs font-bold border border-canvas-border">
+                  [● OPERATIONAL]
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= 02. CHAPTER 2: BILL OF MATERIALS (BOM & SKILLS) ================= -->
+        <section class="chapter-section rv border-2 border-canvas-border bg-canvas-surface p-4 md:p-6 scroll-mt-16 tech-shadow-lg" id="ch-02">
+          
+          <div class="flex flex-wrap items-center justify-between border-b-2 border-canvas-border pb-2 mb-4 gap-2">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+                <h2 class="text-base md:text-lg font-headline font-bold uppercase text-canvas-ink tracking-wide">
+                  CH. 02 // BILL OF MATERIALS (BOM) &amp; SKILL SUBSYSTEMS
+                </h2>
+              </div>
+              <div class="text-[11px] font-spec-code italic text-canvas-ink-muted">
+                Calibrated with realistic operational proficiencies. Click any component for technical datasheet.
+              </div>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-1 font-spec-code text-[10px]" id="bom-filters">
+              <button class="bom-filter-btn active px-2.5 py-1 bg-canvas-ink text-canvas-surface font-bold border border-canvas-border" data-filter="all">ALL [09]</button>
+              <button class="bom-filter-btn px-2.5 py-1 bg-canvas-surface text-canvas-ink border border-canvas-border hover:bg-canvas-surface-high" data-filter="core">BACKEND/CORE</button>
+              <button class="bom-filter-btn px-2.5 py-1 bg-canvas-surface text-canvas-ink border border-canvas-border hover:bg-canvas-surface-high" data-filter="db">DATABASES</button>
+              <button class="bom-filter-btn px-2.5 py-1 bg-canvas-surface text-canvas-ink border border-canvas-border hover:bg-canvas-surface-high" data-filter="ui">FRONTEND/UI</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Gauges Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="bom-grid">
+            
+            <!-- Skill 1: HTML / CSS -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="ui" data-skill="HTML / CSS" data-spec="Responsive semantic layouts, Tailwind styling, CSS custom properties, accessibility and fluid animations.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">code</span>HTML / CSS</span>
+                <span class="text-canvas-accent font-bold text-xs">75%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 75%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: CORE UI</span>
+                <span class="text-canvas-ink font-bold">CALIBRATED</span>
+              </div>
+            </div>
+
+            <!-- Skill 2: MySQL -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="db" data-skill="MySQL" data-spec="Relational schema modeling, multi-table joins, transactions, indexing, foreign keys, stored queries for SehatHub.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">database</span>MySQL</span>
+                <span class="text-canvas-accent font-bold text-xs">70%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 70%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: RDBMS CORE</span>
+                <span class="text-canvas-ink font-bold">CALIBRATED</span>
+              </div>
+            </div>
+
+            <!-- Skill 3: Python -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="core" data-skill="Python" data-spec="Object-oriented programming, data structures, backend business logic, scripting, algorithmic problem solving.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">terminal</span>Python</span>
+                <span class="text-canvas-accent font-bold text-xs">68%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 68%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: LOGIC CORE</span>
+                <span class="text-canvas-ink font-bold">CALIBRATED</span>
+              </div>
+            </div>
+
+            <!-- Skill 4: Flask -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="core" data-skill="Flask" data-spec="Micro-framework API routing, Jinja templating, session auth, file upload handling, role-based access control.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">lan</span>Flask</span>
+                <span class="text-canvas-accent font-bold text-xs">65%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 65%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: WEB ENGINE</span>
+                <span class="text-canvas-ink font-bold">CALIBRATED</span>
+              </div>
+            </div>
+
+            <!-- Skill 5: C++ -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="core" data-skill="C++" data-spec="Pointers, memory management, OOP concepts, standard template library (STL), data structures & algorithms coursework.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">memory</span>C++</span>
+                <span class="text-canvas-accent font-bold text-xs">60%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 60%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: LOW-LEVEL</span>
+                <span class="text-canvas-ink font-bold">CALIBRATED</span>
+              </div>
+            </div>
+
+            <!-- Skill 6: Oracle DB -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="db" data-skill="Oracle SQL" data-spec="SQL queries, constraints, aggregate functions, relational normalizations, academic database coursework.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">storage</span>Oracle</span>
+                <span class="text-canvas-accent font-bold text-xs">55%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 55%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: ENTERPRISE DB</span>
+                <span class="text-canvas-ink font-bold">STABLE</span>
+              </div>
+            </div>
+
+            <!-- Skill 7: Express.js -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="core" data-skill="Express.js" data-spec="Node.js middleware, RESTful API endpoints, JSON web token (JWT) verification, error handling.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">dns</span>Express.js</span>
+                <span class="text-canvas-accent font-bold text-xs">55%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-ink h-full transition-all duration-1000 ease-out" style="width: 55%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: API RUNTIME</span>
+                <span class="text-canvas-ink font-bold">STABLE</span>
+              </div>
+            </div>
+
+            <!-- Skill 8: MongoDB -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="db" data-skill="MongoDB" data-spec="Document-based NoSQL storage, collections, Mongoose schema modeling, CRUD queries in AURA Restaurant App.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">folder_data</span>MongoDB</span>
+                  <span class="bg-canvas-accent/20 text-canvas-accent text-[9px] font-bold px-1 border border-canvas-accent">LEARNING</span>
+                </div>
+                <span class="text-canvas-accent font-bold text-xs">45%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-accent h-full transition-all duration-1000 ease-out" style="width: 45%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: NOSQL</span>
+                <span class="text-canvas-accent font-bold">ACCELERATING</span>
+              </div>
+            </div>
+
+            <!-- Skill 9: React Native -->
+            <div class="bom-item border-2 border-canvas-border p-3.5 bg-canvas-surface-low tech-shadow-hover transition-all cursor-pointer" data-category="ui" data-skill="React Native" data-spec="Cross-platform mobile UI components, navigation, state management, mobile app MVP architecture.">
+              <div class="flex justify-between items-center font-spec-code mb-1.5">
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-canvas-ink font-bold text-xs flex items-center"><span class="material-symbols-outlined text-[14px] mr-1 text-canvas-accent">smartphone</span>React Native</span>
+                  <span class="bg-canvas-accent/20 text-canvas-accent text-[9px] font-bold px-1 border border-canvas-accent">LEARNING</span>
+                </div>
+                <span class="text-canvas-accent font-bold text-xs">40%</span>
+              </div>
+              <div class="w-full bg-canvas-surface-high h-3 border border-canvas-border p-0.5 flex">
+                <div class="skill-gauge-fill bg-canvas-accent h-full transition-all duration-1000 ease-out" style="width: 40%;"></div>
+              </div>
+              <div class="text-[10px] font-spec-code text-canvas-ink-muted mt-2 flex justify-between">
+                <span>STAGE: MOBILE HYBRID</span>
+                <span class="text-canvas-accent font-bold">ACCELERATING</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Auxiliary Workbench Tooling Bar & Dynamic Inspector Box -->
+          <div class="mt-4 pt-3 border-t-2 border-canvas-border flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-[11px] font-spec-code uppercase font-bold text-canvas-ink">
+                AUXILIARY TOOLING:
+              </span>
+              <span class="border border-canvas-border bg-canvas-surface px-2 py-0.5 text-[11px] font-spec-code text-canvas-ink">
+                [● Git &amp; GitHub (basic)]
+              </span>
+              <span class="border border-canvas-border bg-canvas-surface px-2 py-0.5 text-[11px] font-spec-code text-canvas-ink">
+                [● Postman]
+              </span>
+            </div>
+            <div id="bom-inspect-badge" class="text-[10px] font-spec-code text-canvas-accent font-bold">
+              TIP: CLICK ANY PART TO INSPECT COMPONENT DATASHEET
+            </div>
+          </div>
+
+          <!-- Live Datasheet Popover Plate -->
+          <div id="datasheet-plate" class="hidden mt-3 p-3 bg-canvas-surface-high border-2 border-canvas-accent font-spec-code text-xs">
+            <div class="flex justify-between items-center mb-1 text-canvas-accent font-bold">
+              <span id="ds-title">COMPONENT DATASHEET</span>
+              <button onclick="document.getElementById('datasheet-plate').classList.add('hidden')" class="text-canvas-ink hover:text-canvas-accent font-bold">[ESC / CLOSE]</button>
+            </div>
+            <p id="ds-desc" class="text-canvas-ink"></p>
+          </div>
+
+        </section>
+
+        <!-- ================= 03. CHAPTER 3: COMPONENT SUB-ASSEMBLIES (PROJECTS) ================= -->
+        <section class="chapter-section rv border-2 border-canvas-border bg-canvas-surface p-4 md:p-6 scroll-mt-16 tech-shadow-lg" id="ch-03">
+          
+          <div class="flex items-center justify-between border-b-2 border-canvas-border pb-2 mb-6">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+                <h2 class="text-base md:text-lg font-headline font-bold uppercase text-canvas-ink tracking-wide">
+                  CH. 03 // COMPONENT SUB-ASSEMBLIES (DEPLOYED PROTOTYPES)
+                </h2>
+              </div>
+              <div class="text-[11px] font-spec-code text-canvas-ink-muted">
+                Engineered full-stack solutions. Interactive role &amp; feature previews built directly into the manual.
+              </div>
+            </div>
+            <div class="rivet"></div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- ================= MODULE 01: SehatHub ================= -->
+            <div class="border-2 border-canvas-border bg-canvas-surface-low flex flex-col justify-between tech-shadow">
+              
+              <!-- Module Header -->
+              <div class="border-b-2 border-canvas-border p-3 bg-canvas-surface flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                  <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+                  <span class="text-xs font-headline font-bold uppercase text-canvas-ink">MODULE 01: SehatHub</span>
+                </div>
+                <span class="text-[10px] font-spec-code border border-canvas-border px-1.5 py-0.5 bg-canvas-surface-high font-bold">
+                  FLAGSHIP DBMS
+                </span>
+              </div>
+
+              <!-- Module Body Content -->
+              <div class="p-4 space-y-4">
+                
+                <!-- Metadata -->
+                <div class="space-y-1 font-spec-code">
+                  <div class="text-xs text-canvas-ink">
+                    <span class="font-bold text-canvas-accent">TYPE:</span> Online Pharmacy Management System (DBMS Semester Project)
+                  </div>
+                  <div class="text-xs text-canvas-ink font-semibold">
+                    <span class="text-canvas-ink-muted">TECH STACK:</span> Python, Flask, MySQL, Tailwind CSS, JavaScript, Chart.js
+                  </div>
+                </div>
+
+                <!-- INTERACTIVE LIVE SIMULATOR: SehatHub Roles -->
+                <div class="border-2 border-canvas-border bg-canvas-surface p-3 font-spec-code text-xs">
+                  <div class="flex justify-between items-center border-b border-canvas-border pb-1.5 mb-2.5">
+                    <span class="font-bold text-canvas-ink">INTERACTIVE SIMULATION RIG</span>
+                    <span class="text-canvas-accent font-bold">[SAMPLE DEMO]</span>
+                  </div>
+
+                  <div class="mb-2 text-[9px] font-spec-code bg-canvas-surface-high border border-canvas-border px-2 py-0.5 text-canvas-ink-muted text-center font-bold">
+                    SAMPLE DATA, NOT REAL PATIENTS
+                  </div>
+
+                  <!-- Role Switcher Tabs -->
+                  <div class="grid grid-cols-4 gap-1 mb-3 text-[10px] text-center font-bold">
+                    <button class="sh-tab active p-1 border border-canvas-border bg-canvas-ink text-canvas-surface" data-tab="cust">CUSTOMER</button>
+                    <button class="sh-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black" data-tab="pharm">PHARMACIST</button>
+                    <button class="sh-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black" data-tab="admin">ADMIN</button>
+                    <button class="sh-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black" data-tab="ai">AI BOT</button>
+                  </div>
+
+                  <!-- Role Dynamic Display Panels -->
+                  <div id="sh-panel-cust" class="sh-panel space-y-2">
+                    <div class="p-2 border border-canvas-border bg-canvas-surface-high flex justify-between items-center">
+                      <div>
+                        <div class="font-bold text-canvas-ink">Prescription Order #4082</div>
+                        <div class="text-[10px] text-canvas-ink-muted">Rx: Sample Medicine A + Sample Medicine B</div>
+                      </div>
+                      <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-600 font-bold border border-emerald-500 text-[10px]">VERIFIED</span>
+                    </div>
+                    <div class="text-[10px] text-canvas-ink-muted flex justify-between">
+                      <span>Delivery: Sample status</span>
+                    </div>
+                  </div>
+
+                  <div id="sh-panel-pharm" class="sh-panel hidden space-y-2">
+                    <div class="p-2 border border-canvas-border bg-canvas-surface-high">
+                      <div class="flex justify-between text-[11px] mb-1">
+                        <span class="font-bold">Pending Rx Approval</span>
+                        <span class="text-canvas-accent font-bold">URGENT</span>
+                      </div>
+                      <div class="text-[10px] text-canvas-ink-muted mb-2">Doctor: Dr. Sample // Patient: Test Patient</div>
+                      <div class="flex gap-2">
+                        <button id="rx-approve-btn" onclick="this.innerText='[✓ APPROVED & STOCKED]'; this.classList.add('bg-emerald-600','text-white');" class="px-2 py-1 bg-canvas-ink text-canvas-surface text-[10px] font-bold border border-canvas-border">
+                          APPROVE PRESCRIPTION
+                        </button>
+                        <button class="px-2 py-1 bg-canvas-surface text-canvas-ink text-[10px] border border-canvas-border hover:bg-red-500 hover:text-white">
+                          FLAG DOSAGE
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="sh-panel-admin" class="sh-panel hidden space-y-2">
+                    <div class="p-2 border border-canvas-border bg-canvas-surface-high">
+                      <div class="flex justify-between text-[10px] mb-1 font-bold">
+                        <span>STOCK THRESHOLD TELEMETRY</span>
+                        <span class="text-red-500 animate-pulse">2 CRITICAL LOW</span>
+                      </div>
+                      <!-- Mini SVG telemetry chart -->
+                      <svg class="w-full h-12" viewBox="0 0 200 40">
+                        <polyline fill="none" stroke="var(--border-color)" stroke-width="1.5" points="0,35 30,25 60,30 90,15 120,20 150,8 180,12 200,5"/>
+                        <circle cx="150" cy="8" r="3" fill="var(--accent-color)"/>
+                        <circle cx="200" cy="5" r="3" fill="var(--accent-color)"/>
+                      </svg>
+                      <div class="flex justify-between text-[9px] text-canvas-ink-muted">
+                        <span>SAMPLE MEDICINE C: 3 units</span>
+                        <span class="text-canvas-accent font-bold">LOW STOCK ALERT</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="sh-panel-ai" class="sh-panel hidden space-y-2">
+                    <div class="p-2 border border-canvas-border bg-canvas-surface-high text-[10px] space-y-1">
+                      <div class="text-canvas-ink-muted">USER: "Is this medicine available?"</div>
+                      <div class="text-canvas-ink font-bold bg-canvas-surface p-1.5 border border-canvas-border">
+                        AI BOT: "Please ask your pharmacist or doctor before combining medicines."
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Telemetry Wireframe Features Bar -->
+                  <div class="mt-2.5 pt-2 border-t border-dashed border-canvas-border/40 flex justify-between items-center text-[10px]">
+                    <span>DATA BUS: Chart.js Telemetry</span>
+                    <span class="text-canvas-accent font-bold">ROLE RBAC ACTIVE</span>
+                  </div>
+                </div>
+
+                <!-- Engineering Description -->
+                <div>
+                  <div class="text-[11px] font-spec-code uppercase font-bold text-canvas-ink mb-1">
+                    ENGINEERING ARCHITECTURE:
+                  </div>
+                  <p class="font-body text-xs text-canvas-ink leading-relaxed">
+                    Designed from 8 years of authentic pharmacy workflow. Features 4 distinct user roles (Customer, Pharmacist, Admin, Delivery); prescription image upload pipeline with pharmacist verification; low-stock alerts; dynamic sales analytics charts; order tracking; and automated AI customer assistant.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Module Action Footer -->
+              <div class="border-t-2 border-canvas-border p-3 bg-canvas-surface-high flex items-center justify-between font-spec-code text-xs">
+                <div class="flex space-x-2">
+                  <a class="px-3 py-1.5 bg-canvas-ink text-canvas-surface font-bold uppercase border border-canvas-border hover:bg-canvas-accent hover:text-black transition-all flex items-center gap-1 tech-shadow" href="https://github.com/obaids093-prog/SehatHub-Pharmacy" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[14px]">code</span> GITHUB REPO
+                  </a>
+                  <a class="px-3 py-1.5 bg-canvas-surface text-canvas-ink font-bold uppercase border border-canvas-border hover:bg-canvas-accent hover:text-black transition-all flex items-center gap-1" href="https://drive.google.com/file/d/1bHFPgEYC2TiFHVyxYJjFjjx5-LDErDjd/view?usp=sharing" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[14px]">play_circle</span> DEMO VIDEO
+                  </a>
+                </div>
+                <span class="text-[10px] text-canvas-ink-muted font-bold">SUB-ASSY // 01</span>
+              </div>
+
+            </div>
+
+            <!-- ================= MODULE 02: AURA Restaurant App ================= -->
+            <div class="border-2 border-canvas-border bg-canvas-surface-low flex flex-col justify-between tech-shadow">
+              
+              <!-- Module Header -->
+              <div class="border-b-2 border-canvas-border p-3 bg-canvas-surface flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                  <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+                  <span class="text-xs font-headline font-bold uppercase text-canvas-ink">MODULE 02: AURA Restaurant App</span>
+                </div>
+                <span class="text-[10px] font-spec-code border border-canvas-border px-1.5 py-0.5 bg-canvas-surface-high font-bold">
+                  MOBILE FULL-STACK
+                </span>
+              </div>
+
+              <!-- Module Body Content -->
+              <div class="p-4 space-y-4">
+                
+                <!-- Metadata -->
+                <div class="space-y-1 font-spec-code">
+                  <div class="text-xs text-canvas-ink">
+                    <span class="font-bold text-canvas-accent">TYPE:</span> Full-Stack Mobile MVP &amp; Reservation Engine
+                  </div>
+                  <div class="text-xs text-canvas-ink font-semibold">
+                    <span class="text-canvas-ink-muted">TECH STACK:</span> React Native, Express.js, MongoDB, JWT, Postman
+                  </div>
+                </div>
+
+                <!-- INTERACTIVE LIVE SIMULATOR: AURA Engine -->
+                <div class="border-2 border-canvas-border bg-canvas-surface p-3 font-spec-code text-xs">
+                  <div class="flex justify-between items-center border-b border-canvas-border pb-1.5 mb-2.5">
+                    <span class="font-bold text-canvas-ink">RESERVATION COLLISION ENGINE</span>
+                    <span class="text-canvas-accent font-bold">[POSTMAN TESTED]</span>
+                  </div>
+
+                  <!-- Feature Selector Tabs -->
+                  <div class="grid grid-cols-3 gap-1 mb-3 text-[10px] text-center font-bold">
+                    <button class="aura-tab active p-1 border border-canvas-border bg-canvas-ink text-canvas-surface" data-tab="tables">TABLE ENGINE</button>
+                    <button class="aura-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black" data-tab="cart">CART &amp; PROMO</button>
+                    <button class="aura-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black" data-tab="jwt">JWT SECURITY</button>
+                  </div>
+
+                  <!-- Tab 1: Table Collision Booking -->
+                  <div id="aura-panel-tables" class="aura-panel space-y-2">
+                    <div class="text-[10px] text-canvas-ink-muted mb-1">Click a table to test double-booking prevention:</div>
+                    <div class="grid grid-cols-4 gap-1.5 text-center text-[10px]">
+                      <button onclick="bookTable(1, this)" class="p-2 border border-canvas-border bg-emerald-500/20 text-emerald-600 font-bold hover:opacity-80">
+                        TBL 01<br><span class="text-[8px]">[OPEN]</span>
+                      </button>
+                      <button onclick="bookTable(2, this)" class="p-2 border border-canvas-border bg-red-500 text-white font-bold cursor-not-allowed">
+                        TBL 02<br><span class="text-[8px]">[BOOKED]</span>
+                      </button>
+                      <button onclick="bookTable(3, this)" class="p-2 border border-canvas-border bg-emerald-500/20 text-emerald-600 font-bold hover:opacity-80">
+                        TBL 03<br><span class="text-[8px]">[OPEN]</span>
+                      </button>
+                      <button onclick="bookTable(4, this)" class="p-2 border border-canvas-border bg-emerald-500/20 text-emerald-600 font-bold hover:opacity-80">
+                        TBL 04<br><span class="text-[8px]">[OPEN]</span>
+                      </button>
+                    </div>
+                    <div id="table-alert-msg" class="text-[10px] text-canvas-accent font-bold text-center mt-1">
+                      SELECT TABLE AT 20:00 HRS
+                    </div>
+                  </div>
+
+                  <!-- Tab 2: Cart & Promo Code -->
+                  <div id="aura-panel-cart" class="aura-panel hidden space-y-2">
+                    <div class="p-2 border border-canvas-border bg-canvas-surface-high text-[10px]">
+                      <div class="flex justify-between font-bold mb-1">
+                        <span>ORDER: Ribeye Steak + Truffle Fries [SAMPLE]</span>
+                        <span>Rs. 4,800</span>
+                      </div>
+                      <div class="flex gap-1.5 mt-2">
+                        <input id="aura-promo-input" aria-label="Promotional Code" type="text" placeholder="PROMO CODE: OBAID20" class="w-full text-[10px] p-1 border border-canvas-border bg-canvas-surface font-spec-code uppercase"/>
+                        <button onclick="applyPromo()" class="px-2 py-1 bg-canvas-ink text-canvas-surface font-bold text-[10px] whitespace-nowrap">APPLY</button>
+                      </div>
+                      <div id="promo-status" class="text-[9px] text-emerald-600 font-bold mt-1"></div>
+                    </div>
+                  </div>
+
+                  <!-- Tab 3: JWT Security Token -->
+                  <div id="aura-panel-jwt" class="aura-panel hidden space-y-1 font-spec-code text-[10px]">
+                    <div class="p-1.5 border border-canvas-border bg-canvas-surface-high">
+                      <div class="text-canvas-ink-muted">HEADER: {"alg": "HS256", "typ": "JWT"}</div>
+                      <div class="text-canvas-accent font-bold">PAYLOAD: {"role": "Customer", "userId": "aura_8084"}</div>
+                      <div class="text-canvas-ink-muted">SIGNATURE: VERIFIED VIA SHA256 SECRET</div>
+                    </div>
+                  </div>
+
+                  <!-- Status footer -->
+                  <div class="mt-2.5 pt-2 border-t border-dashed border-canvas-border/40 flex justify-between items-center text-[10px]">
+                    <span>DOUBLE BOOKING: HARD LOCKED</span>
+                    <span class="text-canvas-accent font-bold">REST API READY</span>
+                  </div>
+                </div>
+
+                <!-- Engineering Description -->
+                <div>
+                  <div class="text-[11px] font-spec-code uppercase font-bold text-canvas-ink mb-1">
+                    ENGINEERING ARCHITECTURE:
+                  </div>
+                  <p class="font-body text-xs text-canvas-ink leading-relaxed">
+                    Engineered with customer and manager role authentication; dynamic restaurant menu with live cart and promo code discounts; order status tracking; table reservation by date and time that blocks double booking; fully tested against REST endpoints in Postman.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Module Action Footer -->
+              <div class="border-t-2 border-canvas-border p-3 bg-canvas-surface-high flex items-center justify-between font-spec-code text-xs">
+                <div class="flex space-x-2">
+                  <a class="px-3 py-1.5 bg-canvas-ink text-canvas-surface font-bold uppercase border border-canvas-border hover:bg-canvas-accent hover:text-black transition-all flex items-center gap-1 tech-shadow" href="https://github.com/obaids093-prog/Restaurant-app-mvp" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[14px]">code</span> GITHUB REPO
+                  </a>
+                  <a class="px-3 py-1.5 bg-canvas-surface text-canvas-ink font-bold uppercase border border-canvas-border hover:bg-canvas-accent hover:text-black transition-all flex items-center gap-1" href="https://drive.google.com/file/d/1Zd-ZFAnwHD9D3fsh-H44rB7LE0ULUfg8/view?usp=sharing" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[14px]">play_circle</span> DEMO VIDEO
+                  </a>
+                </div>
+                <span class="text-[10px] text-canvas-ink-muted font-bold">SUB-ASSY // 02</span>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= 04. CHAPTER 4: REVISION HISTORY (FIELD LOG) ================= -->
+        <section class="chapter-section rv border-2 border-canvas-border bg-canvas-surface p-4 md:p-6 scroll-mt-16 tech-shadow-lg" id="ch-04">
+          
+          <div class="flex items-center justify-between border-b-2 border-canvas-border pb-2 mb-4">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+              <h2 class="text-base md:text-lg font-headline font-bold uppercase text-canvas-ink tracking-wide">
+                CH. 04 // REVISION HISTORY &amp; FIELD LOG (2017 - PRESENT)
+              </h2>
+            </div>
+            <span class="font-spec-code text-[11px] text-canvas-ink-muted">
+              CHRONOLOGY LOG: REV A - REV E
+            </span>
+          </div>
+
+          <!-- Interactive Revision Log Table -->
+          <div class="border-2 border-canvas-border bg-canvas-surface-low overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-canvas-surface-high border-b-2 border-canvas-border">
+                  <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink border-r-2 border-canvas-border w-20">REV</th>
+                  <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink border-r-2 border-canvas-border w-36">DURATION</th>
+                  <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink border-r-2 border-canvas-border">ASSIGNMENT / POSITION</th>
+                  <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink">FIELD STATION / INSTITUTION</th>
+                  <th class="p-2.5 font-spec-code text-[11px] uppercase text-canvas-ink text-right">METRIC</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y border-canvas-border font-spec-code text-xs">
+                
+                <!-- REV E -->
+                <tr class="hover:bg-canvas-surface-high/60 transition-colors">
+                  <td class="p-2.5 font-bold text-canvas-accent bg-canvas-surface border-r border-canvas-border flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-canvas-accent inline-block"></span> REV E
+                  </td>
+                  <td class="p-2.5 border-r border-canvas-border font-semibold">2024 to 2028</td>
+                  <td class="p-2.5 font-bold text-canvas-ink border-r border-canvas-border">BS Computer Science (5th Sem)</td>
+                  <td class="p-2.5 text-canvas-ink">Abasyn University, Islamabad</td>
+                  <td class="p-2.5 text-right font-bold text-canvas-accent">ACTIVE DEV</td>
+                </tr>
+
+                <!-- REV D -->
+                <tr class="hover:bg-canvas-surface-high/60 transition-colors">
+                  <td class="p-2.5 font-bold text-canvas-accent bg-canvas-surface border-r border-canvas-border">REV D</td>
+                  <td class="p-2.5 border-r border-canvas-border">2023 to present</td>
+                  <td class="p-2.5 font-bold text-canvas-ink border-r border-canvas-border">Pharmacy Dispenser</td>
+                  <td class="p-2.5 text-canvas-ink">Rawal Hospital Pharmacy</td>
+                  <td class="p-2.5 text-right text-canvas-ink-muted">PHARMACY</td>
+                </tr>
+
+                <!-- REV C -->
+                <tr class="hover:bg-canvas-surface-high/60 transition-colors">
+                  <td class="p-2.5 font-bold text-canvas-accent bg-canvas-surface border-r border-canvas-border">REV C</td>
+                  <td class="p-2.5 border-r border-canvas-border">2020 (6 months)</td>
+                  <td class="p-2.5 font-bold text-canvas-ink border-r border-canvas-border">Meter Inspector</td>
+                  <td class="p-2.5 text-canvas-ink">SNGPL (Sui Northern Gas Pipelines Limited)</td>
+                  <td class="p-2.5 text-right text-canvas-ink-muted">WAREHOUSE</td>
+                </tr>
+
+                <!-- REV B -->
+                <tr class="hover:bg-canvas-surface-high/60 transition-colors">
+                  <td class="p-2.5 font-bold text-canvas-accent bg-canvas-surface border-r border-canvas-border">REV B</td>
+                  <td class="p-2.5 border-r border-canvas-border">2020 to 2022</td>
+                  <td class="p-2.5 font-bold text-canvas-ink border-r border-canvas-border">Pharmacy Technician</td>
+                  <td class="p-2.5 text-canvas-ink">Al-Haroon Pharmacy</td>
+                  <td class="p-2.5 text-right text-canvas-ink-muted">PHARMACY</td>
+                </tr>
+
+                <!-- REV A -->
+                <tr class="hover:bg-canvas-surface-high/60 transition-colors">
+                  <td class="p-2.5 font-bold text-canvas-accent bg-canvas-surface border-r border-canvas-border">REV A</td>
+                  <td class="p-2.5 border-r border-canvas-border">2017 to 2019</td>
+                  <td class="p-2.5 font-bold text-canvas-ink border-r border-canvas-border">Pharmacy Salesman</td>
+                  <td class="p-2.5 text-canvas-ink">Al-Khizar Pharmacy</td>
+                  <td class="p-2.5 text-right text-canvas-ink-muted">PHARMACY</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Errata Footnote Block -->
+          <div class="mt-3 p-2.5 bg-canvas-surface-high border border-canvas-border flex flex-wrap items-center justify-between text-xs font-spec-code gap-2">
+            <span class="text-canvas-ink">
+              ▲ ADDENDA: "Computer Basic Course, 2016"
+            </span>
+            <span class="text-canvas-accent font-bold border border-canvas-border px-2 py-0.5 bg-canvas-surface">[CERTIFIED: 2016]</span>
+          </div>
+
+        </section>
+
+        <!-- ================= 05. CHAPTER 5: SUPPORT & DISPATCH (CONTACT) ================= -->
+        <section class="chapter-section rv border-2 border-canvas-border bg-canvas-surface p-4 md:p-6 relative scroll-mt-16 tech-shadow-lg" id="ch-05">
+          
+          <div class="flex items-center justify-between border-b-2 border-canvas-border pb-2 mb-6">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 bg-canvas-accent inline-block"></span>
+                <h2 class="text-base md:text-lg font-headline font-bold uppercase text-canvas-ink tracking-wide">
+                  CH. 05 // OPERATOR SUPPORT &amp; COMMS DISPATCH
+                </h2>
+              </div>
+              <div class="text-[11px] font-spec-code text-canvas-ink-muted">
+                Direct wire transmission channel &amp; terminal dispatch. Send a message and I will reply by email.
+              </div>
+            </div>
+            <div class="font-spec-code text-xs text-canvas-accent select-none font-bold">+ TARGET LOCKED +</div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Direct Channels & Barcode Frame -->
+            <div class="lg:col-span-5 space-y-4">
+              
+              <div class="border-2 border-canvas-border p-4 bg-canvas-surface-low space-y-3 tech-shadow">
+                <div class="text-xs font-spec-code uppercase font-bold text-canvas-accent flex items-center justify-between">
+                  <span>DIRECT WIRE CHANNELS:</span>
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="border-b border-canvas-border/30 pb-2">
+                  <div class="text-[10px] font-spec-code text-canvas-ink-muted">PRIMARY PACKET ROUTE (EMAIL):</div>
+                  <a class="text-sm font-spec-code font-bold text-canvas-ink hover:text-canvas-accent transition-colors flex items-center gap-1.5" href="mailto:obaids093@gmail.com">
+                    <span class="material-symbols-outlined text-[15px] text-canvas-accent">mail</span>
+                    obaids093@gmail.com
+                  </a>
+                </div>
+
+                <!-- GitHub -->
+                <div class="border-b border-canvas-border/30 pb-2">
+                  <div class="text-[10px] font-spec-code text-canvas-ink-muted">REPOSITORY DISPATCH (GITHUB):</div>
+                  <a class="text-sm font-spec-code font-bold text-canvas-ink hover:text-canvas-accent transition-colors flex items-center gap-1.5" href="https://github.com/obaids093-prog" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[15px] text-canvas-accent">code</span>
+                    github.com/obaids093-prog
+                  </a>
+                </div>
+
+                <!-- LinkedIn -->
+                <div>
+                  <div class="text-[10px] font-spec-code text-canvas-ink-muted">PROFESSIONAL NETWORK (LINKEDIN):</div>
+                  <a class="text-sm font-spec-code font-bold text-canvas-ink hover:text-canvas-accent transition-colors flex items-center gap-1.5" href="https://linkedin.com/in/syed-obaid-ali-5400b836b" target="_blank" rel="noopener">
+                    <span class="material-symbols-outlined text-[15px] text-canvas-accent">link</span>
+                    linkedin.com/in/syed-obaid-ali-5400b836b
+                  </a>
+                </div>
+              </div>
+
+              <!-- Barcode Technical Decal -->
+              <div class="border-2 border-canvas-border p-3 bg-canvas-surface flex flex-col items-center">
+                <div class="h-10 w-full flex items-center justify-between px-2 bg-canvas-surface-high border border-canvas-border">
+                  <span class="barcode-line w-[2px]"></span>
+                  <span class="barcode-line w-[4px]"></span>
+                  <span class="barcode-line w-[1px]"></span>
+                  <span class="barcode-line w-[5px]"></span>
+                  <span class="barcode-line w-[2px]"></span>
+                  <span class="barcode-line w-[3px]"></span>
+                  <span class="barcode-line w-[1px]"></span>
+                  <span class="barcode-line w-[6px]"></span>
+                  <span class="barcode-line w-[2px]"></span>
+                  <span class="barcode-line w-[4px]"></span>
+                  <span class="barcode-line w-[2px]"></span>
+                  <span class="barcode-line w-[1px]"></span>
+                  <span class="barcode-line w-[5px]"></span>
+                  <span class="barcode-line w-[3px]"></span>
+                  <span class="barcode-line w-[2px]"></span>
+                  <span class="barcode-line w-[4px]"></span>
+                </div>
+                <div class="text-[11px] font-spec-code text-canvas-ink tracking-widest mt-1.5 font-bold">
+                  * 8084-OBAID-01-REV-A *
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Form: Name, Email, Message with Live Telemetry Dispatch Feedback -->
+            <div class="lg:col-span-7">
+              <form id="contact-form" action="https://formsubmit.co/obaids093@gmail.com" method="POST" class="border-2 border-canvas-border bg-canvas-surface-low p-4 space-y-4 tech-shadow">
+                <input type="hidden" name="_subject" value="[OBAID-01] New Portfolio Message"/>
+                <input type="hidden" name="_template" value="table"/>
+                <input type="hidden" name="_captcha" value="false"/>
+                <input type="hidden" name="_next" value="https://roaring-platypus-f1eda7.netlify.app/#ch-05"/>
+                
+                <div class="text-xs font-spec-code uppercase font-bold text-canvas-ink border-b-2 border-canvas-border pb-2 flex justify-between items-center">
+                  <span>DISPATCH TRANSMISSION TELEGRAM</span>
+                  <span class="text-[10px] text-canvas-accent">BUFFER: READY</span>
+                </div>
+
+                <!-- Field 1: Name -->
+                <div>
+                  <label for="form-name" class="block text-[11px] font-spec-code uppercase font-bold text-canvas-ink mb-1">
+                    TRANSMITTER IDENTIFICATION (NAME) *
+                  </label>
+                  <input id="form-name" name="name" class="w-full bg-canvas-surface border-2 border-canvas-border rounded-none p-2 font-spec-code text-xs text-canvas-ink focus:outline-none focus:border-canvas-accent" placeholder="ENTER YOUR FULL NAME / RECRUITER ID..." required="" type="text"/>
+                </div>
+
+                <!-- Field 2: Email -->
+                <div>
+                  <label for="form-email" class="block text-[11px] font-spec-code uppercase font-bold text-canvas-ink mb-1">
+                    RETURN PACKET DESTINATION (EMAIL) *
+                  </label>
+                  <input id="form-email" name="email" class="w-full bg-canvas-surface border-2 border-canvas-border rounded-none p-2 font-spec-code text-xs text-canvas-ink focus:outline-none focus:border-canvas-accent" placeholder="YOUR EMAIL ADDRESS (E.G. CONTACT@COMPANY.COM)..." required="" type="email"/>
+                </div>
+
+                <!-- Field 3: Message -->
+                <div>
+                  <label for="form-message" class="block text-[11px] font-spec-code uppercase font-bold text-canvas-ink mb-1">
+                    PAYLOAD CONTENT (YOUR MESSAGE) *
+                  </label>
+                  <textarea id="form-message" name="message" class="w-full bg-canvas-surface border-2 border-canvas-border rounded-none p-2 font-spec-code text-xs text-canvas-ink focus:outline-none focus:border-canvas-accent" placeholder="ENTER YOUR MESSAGE OR QUERY..." required="" rows="4"></textarea>
+                </div>
+
+                <!-- Telemetry Submission Status Bar -->
+                <div id="dispatch-progress-bar" class="hidden w-full bg-canvas-surface-high border border-canvas-border h-2 p-0.5">
+                  <div id="dispatch-progress-fill" class="bg-canvas-accent h-full w-0 transition-all duration-700"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-2 flex flex-wrap justify-between items-center gap-2">
+                  <span id="dispatch-status-note" class="text-[11px] font-spec-code text-canvas-ink-muted">
+                    STATUS: READY FOR TRANSMISSION
+                  </span>
+                  <button type="submit" class="px-6 py-2.5 bg-canvas-accent text-black font-spec-code text-xs font-bold uppercase tracking-wider border-2 border-canvas-border hover:bg-canvas-ink hover:text-canvas-surface transition-all tech-shadow flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[15px]">send</span>
+                    TRANSMIT PACKET
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- ================= TECHNICAL FOOTER ================= -->
+    <footer class="w-full py-4 px-6 border-t-2 border-canvas-border bg-canvas-surface flex flex-col md:flex-row justify-between items-center gap-4 select-none">
+      <div class="flex items-center space-x-3 font-spec-code text-xs">
+        <span class="font-bold text-canvas-ink">
+          OBAID-01 // BUILT BY: SYED OBAID ALI
+        </span>
+        <span class="text-canvas-ink-muted hidden sm:inline">
+          // SPECIFICATION REF: OM-01-REV-A.4
+        </span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 font-spec-code text-[11px]">
+        <a class="text-canvas-ink-muted hover:text-canvas-accent uppercase tracking-wider transition-colors" href="#ch-01">
+          CALIBRATION MATRIX
+        </a>
+        <a class="text-canvas-ink-muted hover:text-canvas-accent uppercase tracking-wider transition-colors" href="#ch-02">
+          PARTS BOM
+        </a>
+        <a class="text-canvas-ink-muted hover:text-canvas-accent uppercase tracking-wider transition-colors" href="#ch-03">
+          PROTOTYPES
+        </a>
+        <button onclick="document.getElementById('open-terminal-btn').click()" class="text-canvas-accent hover:underline font-bold">
+          &gt;_ TERMINAL CONSOLE
+        </button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ================= INTERACTIVE CRT DIAGNOSTIC TERMINAL MODAL ================= -->
+  <div id="terminal-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 md:p-6">
+    <div class="w-full max-w-3xl bg-[#0b0e14] border-2 border-canvas-accent tech-shadow-lg flex flex-col h-[520px] max-h-[90vh] font-spec-code text-xs text-[#00f0ff] scanlines relative overflow-hidden">
+      
+      <!-- Terminal Header -->
+      <div class="bg-[#121722] border-b-2 border-canvas-accent px-3 py-2 flex justify-between items-center select-none text-white">
+        <div class="flex items-center space-x-2">
+          <button type="button" aria-label="Close terminal window" class="w-2.5 h-2.5 bg-red-500 rounded-full inline-block cursor-pointer p-0 border-none" onclick="closeTerminal()"></button>
+          <span class="w-2.5 h-2.5 bg-yellow-500 rounded-full inline-block"></span>
+          <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full inline-block"></span>
+          <span class="ml-2 font-bold text-xs uppercase tracking-wider text-[#00f0ff]">OBAID-01 // DIAGNOSTIC SHELL v2.4</span>
+        </div>
+        <button onclick="closeTerminal()" class="text-white hover:text-canvas-accent text-xs font-bold">[X] CLOSE</button>
+      </div>
+
+      <!-- Terminal Output Screen -->
+      <div id="terminal-screen" class="flex-1 p-4 overflow-y-auto space-y-2 leading-relaxed text-[12px]">
+        <div class="text-[#8899aa]">============================================================</div>
+        <div class="text-[#ffb400] font-bold">OBAID-01 SERVICE MANUAL TELEMETRY FIRMWARE [REV A.4]</div>
+        <div class="text-[#8899aa]">System initialized. Connected to Syed Obaid Ali logic core.</div>
+        <div>Type <span class="text-white font-bold bg-[#1a2333] px-1">'help'</span> to inspect available diagnostic directives.</div>
+        <div class="text-[#8899aa]">============================================================</div>
+      </div>
+
+      <!-- Terminal Input Command Bar -->
+      <form id="terminal-form" class="border-t-2 border-canvas-accent bg-[#0e131d] p-2 flex items-center space-x-2">
+        <span class="text-canvas-accent font-bold">&gt;_</span>
+        <input id="terminal-input" aria-label="Terminal command input" type="text" autocomplete="off" spellcheck="false" class="flex-1 bg-transparent border-none text-[#00f0ff] focus:outline-none font-spec-code text-xs" placeholder="type a command (help, skills, projects, bio, explode, theme, clear)..."/>
+        <button type="submit" class="px-2 py-0.5 bg-canvas-accent text-black font-bold text-[10px] uppercase">EXEC</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ================= THREE.JS 3D ENGINE ================= -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- ================= MASTER SYSTEM SCRIPT ================= -->
+  <script>
+    /* ========================================================================
+       1. SYNTHESIZED WEB AUDIO API AUDIO ENGINE (ZERO EXTERNAL ASSETS)
+       ======================================================================== */
+    let sfxEnabled = false;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) audioCtx = new AudioContext();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSound(type) {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+
+        if (type === 'click') {
+          // Sharp mechanical relay click
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(800, now);
+          osc.frequency.exponentialRampToValueAtTime(120, now + 0.04);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'beep') {
+          // Sci-fi high terminal blip
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1400, now);
+          osc.frequency.setValueAtTime(1750, now + 0.03);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.09);
+        } else if (type === 'explode') {
+          // Deep mechanical disengage whoosh
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.exponentialRampToValueAtTime(60, now + 0.35);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.36);
+        } else if (type === 'assemble') {
+          // Magnetic latch clamp
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(120, now);
+          osc.frequency.exponentialRampToValueAtTime(480, now + 0.15);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        }
+      } catch (e) {
+        console.warn('Audio synthesis issue:', e);
+      }
+    }
+
+    // SFX toggle button handler
+    const sfxToggleBtn = document.getElementById('sfx-toggle-btn');
+    const sfxIcon = document.getElementById('sfx-icon');
+    const sfxLabel = document.getElementById('sfx-label');
+    sfxToggleBtn.addEventListener('click', () => {
+      sfxEnabled = !sfxEnabled;
+      if (sfxEnabled) {
+        getAudioContext();
+        sfxIcon.textContent = 'volume_up';
+        sfxLabel.textContent = 'SFX: ON';
+        sfxToggleBtn.classList.add('bg-canvas-accent', 'text-black');
+        playSound('beep');
+      } else {
+        sfxIcon.textContent = 'volume_off';
+        sfxLabel.textContent = 'SFX: OFF';
+        sfxToggleBtn.classList.remove('bg-canvas-accent', 'text-black');
+      }
+    });
+
+    // Attach click audio to buttons and links
+    document.querySelectorAll('button, a, input, textarea').forEach(el => {
+      el.addEventListener('click', () => playSound('click'));
+    });
+
+    /* ========================================================================
+       2. THREE.JS DETAILED ROBOTIC CHASSIS & ANIMATED EXPLODED SCHEMATIC
+       ======================================================================== */
+    (function initRobot3D() {
+      const container = document.getElementById('robot3d');
+      const fallbackSvg = document.getElementById('robotSvg');
+      if (!window.THREE || !container) return;
+
+      let renderer;
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      } catch (e) {
+        if (fallbackSvg) fallbackSvg.classList.remove('hidden');
+        return;
+      }
+
+      container.appendChild(renderer.domElement);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+      camera.position.set(0, 0.4, 9.8);
+
+      // Lights
+      const ambLight = new THREE.AmbientLight(0xffffff, 0.85);
+      scene.add(ambLight);
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
+      dirLight.position.set(5, 7, 6);
+      scene.add(dirLight);
+      const pointLight = new THREE.PointLight(0xff5419, 1.2, 8);
+      pointLight.position.set(0, 0, 2);
+      scene.add(pointLight);
+
+      const mainGroup = new THREE.Group();
+      scene.add(mainGroup);
+
+      // Color Palette
+      const INK = 0x15171a;
+      const CHASSIS = 0xe4dfd4;
+      const CHASSIS_DARK = 0xcdc8bc;
+      const ACCENT = 0xff5419;
+      const SCREEN_BG = 0x101318;
+
+      const parts = [];
+
+      // Helper to build beveled/bordered mechanical meshes (pos: [x,y,z], exp: [ex,ey,ez])
+      function makePart(geom, mat, pos, exp, name) {
+        const mesh = new THREE.Mesh(geom, mat);
+        const edges = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geom),
+          new THREE.LineBasicMaterial({ color: INK, linewidth: 1.5 })
+        );
+        mesh.add(edges);
+        mainGroup.add(mesh);
+        parts.push({
+          mesh: mesh,
+          target: new THREE.Vector3(pos[0], pos[1], pos[2]),
+          exploded: new THREE.Vector3(pos[0] + exp[0], pos[1] + exp[1], pos[2] + exp[2]),
+          name: name
+        });
+        mesh.position.set(pos[0], pos[1], pos[2]);
+        return mesh;
+      }
+
+      const matChassis = new THREE.MeshStandardMaterial({ color: CHASSIS, roughness: 0.5, metalness: 0.15 });
+      const matChassisDark = new THREE.MeshStandardMaterial({ color: CHASSIS_DARK, roughness: 0.6, metalness: 0.2 });
+      const matAccent = new THREE.MeshStandardMaterial({ color: ACCENT, roughness: 0.3, emissive: ACCENT, emissiveIntensity: 0.4 });
+      const matScreen = new THREE.MeshBasicMaterial({ color: SCREEN_BG });
+
+      // 1. HEAD UNIT
+      makePart(new THREE.BoxGeometry(2.6, 1.8, 1.7), matChassis, [0, 1.8, 0], [0, 1.8, 0], 'CRT HEAD UNIT');
+      // Screen Inset
+      makePart(new THREE.BoxGeometry(2.0, 1.25, 0.08), matScreen, [0, 1.8, 0.88], [0, 2.0, 1.5], 'SCREEN');
+      // Pixel Eyes (glowing)
+      const eyeL = makePart(new THREE.BoxGeometry(0.35, 0.35, 0.05), matAccent, [-0.45, 1.95, 0.94], [0, 2.1, 2.2], 'EYE L');
+      const eyeR = makePart(new THREE.BoxGeometry(0.35, 0.35, 0.05), matAccent, [0.45, 1.95, 0.94], [0, 2.1, 2.2], 'EYE R');
+      // Animated mouth line
+      makePart(new THREE.BoxGeometry(0.9, 0.1, 0.05), matAccent, [0, 1.45, 0.94], [0, 2.1, 2.2], 'MOUTH');
+      // Antenna mast & rotating radar
+      makePart(new THREE.CylinderGeometry(0.04, 0.04, 0.8, 8), matChassisDark, [0, 3.1, 0], [0, 2.4, 0], 'ANTENNA');
+      makePart(new THREE.SphereGeometry(0.18, 12, 12), matAccent, [0, 3.55, 0], [0, 2.6, 0], 'BEACON');
+
+      // 2. NECK CONNECTOR
+      makePart(new THREE.CylinderGeometry(0.4, 0.4, 0.3, 12), matChassisDark, [0, 0.75, 0], [0, 0.5, 0], 'NECK PIVOT');
+
+      // 3. TORSO / LOGIC CORE
+      makePart(new THREE.BoxGeometry(2.3, 2.1, 1.5), matChassis, [0, -0.45, 0], [0, -0.2, 0], 'LOGIC CORE TORSO');
+      // Pulsing Reactor Heart
+      const reactorCore = makePart(new THREE.CylinderGeometry(0.38, 0.38, 0.25, 16), matAccent, [0, -0.4, 0.78], [0, -0.4, 1.8], 'REACTOR CORE');
+      reactorCore.rotation.x = Math.PI / 2;
+
+      // 4. ARMS & CLAWS
+      // Left Arm
+      makePart(new THREE.SphereGeometry(0.3, 12, 12), matChassisDark, [-1.45, 0.2, 0], [-1.8, 0.5, 0], 'SHOULDER L');
+      makePart(new THREE.BoxGeometry(0.45, 1.5, 0.5), matChassis, [-1.55, -0.65, 0], [-2.0, -0.2, 0], 'ARM L');
+      makePart(new THREE.BoxGeometry(0.4, 0.3, 0.4), matAccent, [-1.55, -1.55, 0], [-2.2, -0.4, 0], 'CLAW L');
+
+      // Right Arm
+      makePart(new THREE.SphereGeometry(0.3, 12, 12), matChassisDark, [1.45, 0.2, 0], [1.8, 0.5, 0], 'SHOULDER R');
+      makePart(new THREE.BoxGeometry(0.45, 1.5, 0.5), matChassis, [1.55, -0.65, 0], [2.0, -0.2, 0], 'ARM R');
+      makePart(new THREE.BoxGeometry(0.4, 0.3, 0.4), matAccent, [1.55, -1.55, 0], [2.2, -0.4, 0], 'CLAW R');
+
+      // 5. BASE & TRACK PLATFORM
+      makePart(new THREE.BoxGeometry(0.65, 1.3, 1.2), matChassisDark, [-0.65, -2.15, 0], [-0.5, -1.8, 0], 'TRACK L');
+      makePart(new THREE.BoxGeometry(0.65, 1.3, 1.2), matChassisDark, [0.65, -2.15, 0], [0.5, -1.8, 0], 'TRACK R');
+
+      // Interactive State
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let explodeProgress = 0; // 0 = assembled, 1 = exploded
+      let targetExplode = 0;
+      let autoRotate = !prefersReducedMotion;
+      let isDragging = false;
+      let lastMouseX = 0;
+      let targetRotY = 0;
+      let targetRotX = 0;
+      let currentRotY = 0;
+      let currentRotX = 0;
+      let wireframeMode = false;
+
+      // Resize handler
+      function resize() {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // Drag to rotate controls
+      container.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+        playSound('click');
+      });
+      window.addEventListener('pointerup', () => { isDragging = false; });
+      window.addEventListener('pointermove', (e) => {
+        const rect = container.getBoundingClientRect();
+        if (isDragging) {
+          const deltaX = (e.clientX - lastMouseX) * 0.01;
+          targetRotY += deltaX;
+          lastMouseX = e.clientX;
+        } else {
+          // Cursor tracking
+          const normX = ((e.clientX - rect.left) / rect.width - 0.5) * 1.2;
+          const normY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.5;
+          targetRotY = normX;
+          targetRotX = normY * 0.4;
+        }
+      });
+
+      // Controls Button Listeners
+      const btnExplode = document.getElementById('btn-3d-explode');
+      const btnAssemble = document.getElementById('btn-3d-assemble');
+      const btnWireframe = document.getElementById('btn-3d-wireframe');
+      const btnSpin = document.getElementById('btn-3d-spin');
+      const liveTelemetry = document.getElementById('robot-live-telemetry');
+
+      function triggerExplode() {
+        targetExplode = 1;
+        playSound('explode');
+        if (liveTelemetry) liveTelemetry.textContent = 'CORE_STATE: EXPLODED SCHEMATIC // TOLERANCE: ±0.05mm';
+      }
+
+      function triggerAssemble() {
+        targetExplode = 0;
+        playSound('assemble');
+        if (liveTelemetry) liveTelemetry.textContent = 'CORE_STATE: ASSEMBLED // ALL SYSTEMS LOCKED';
+      }
+
+      if (btnExplode) btnExplode.addEventListener('click', triggerExplode);
+      if (btnAssemble) btnAssemble.addEventListener('click', triggerAssemble);
+      window.explodeRobot = triggerExplode;
+      window.assembleRobot = triggerAssemble;
+
+      if (btnWireframe) {
+        btnWireframe.addEventListener('click', () => {
+          wireframeMode = !wireframeMode;
+          matChassis.wireframe = wireframeMode;
+          matChassisDark.wireframe = wireframeMode;
+          btnWireframe.classList.toggle('bg-canvas-accent', wireframeMode);
+          btnWireframe.classList.toggle('text-black', wireframeMode);
+          playSound('beep');
+        });
+      }
+
+      if (btnSpin) {
+        if (prefersReducedMotion) {
+          btnSpin.classList.remove('bg-canvas-accent', 'text-black');
+        }
+        btnSpin.addEventListener('click', () => {
+          autoRotate = !autoRotate;
+          btnSpin.classList.toggle('bg-canvas-accent', autoRotate);
+          btnSpin.classList.toggle('text-black', autoRotate);
+          playSound('beep');
+        });
+      }
+
+      // Render Loop
+      const clock = new THREE.Clock();
+      function render() {
+        requestAnimationFrame(render);
+        const elapsedTime = clock.getElapsedTime();
+
+        // Smooth transition of exploded state
+        explodeProgress += (targetExplode - explodeProgress) * 0.08;
+        parts.forEach((p) => {
+          p.mesh.position.lerpVectors(p.target, p.exploded, explodeProgress);
+        });
+
+        // Rotation & Idle Floating
+        currentRotY += (targetRotY - currentRotY) * 0.06;
+        currentRotX += (targetRotX - currentRotX) * 0.06;
+
+        const spinOffset = autoRotate ? Math.sin(elapsedTime * 0.6) * 0.4 : 0;
+        mainGroup.rotation.y = currentRotY + spinOffset;
+        mainGroup.rotation.x = currentRotX;
+        mainGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.06;
+
+        // Blinking Eyes & Pulse Reactor
+        const blink = Math.sin(elapsedTime * 3) > 0.96 ? 0.1 : 1.0;
+        eyeL.scale.y = blink;
+        eyeR.scale.y = blink;
+
+        const pulse = 1.0 + Math.sin(elapsedTime * 4) * 0.12;
+        reactorCore.scale.set(pulse, pulse, pulse);
+
+        renderer.render(scene, camera);
+      }
+      render();
+    })();
+
+    /* ========================================================================
+       3. CHAPTER SCROLL TRACKING & DYNAMIC SYNC
+       ======================================================================== */
+    (function initChapterTracker() {
+      const chapters = [
+        { id: 'ch-00', num: '00', title: 'CH 00: OVERVIEW', badge: '[00]' },
+        { id: 'ch-01', num: '01', title: 'CH 01: SPEC & BIO', badge: '[TS]' },
+        { id: 'ch-02', num: '02', title: 'CH 02: PARTS (BOM)', badge: '[BOM]' },
+        { id: 'ch-03', num: '03', title: 'CH 03: SUB-MODULES', badge: '[MOD]' },
+        { id: 'ch-04', num: '04', title: 'CH 04: FIELD LOG', badge: '[LOG]' },
+        { id: 'ch-05', num: '05', title: 'CH 05: COMMS & DISPATCH', badge: '[DIR]' }
+      ];
+
+      let activeId = 'ch-00';
+
+      function setActiveChapter(newId) {
+        if (newId === activeId) return;
+        activeId = newId;
+        const chData = chapters.find(c => c.id === activeId) || chapters[0];
+
+        // 1. Sidebar Nav
+        document.querySelectorAll('#sidebar-nav .sidebar-ch-item').forEach(link => {
+          const tId = link.dataset.chapterId;
+          const arrow = link.querySelector('.active-indicator');
+          if (tId === activeId) {
+            link.className = 'sidebar-ch-item bg-canvas-ink text-canvas-surface border-l-4 border-canvas-accent font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase transition-all font-bold';
+            if (arrow) arrow.classList.remove('hidden');
+          } else {
+            link.className = 'sidebar-ch-item text-canvas-ink hover:bg-canvas-surface-high font-spec-code text-xs py-2 px-3 flex items-center justify-between uppercase border-l-4 border-transparent transition-all';
+            if (arrow) arrow.classList.add('hidden');
+          }
+        });
+
+        // Sidebar Header Pill
+        const activeChPill = document.getElementById('active-ch-pill');
+        if (activeChPill) activeChPill.textContent = 'CH ' + chData.num;
+
+        // 2. Top Nav Links
+        document.querySelectorAll('#top-nav-links .top-nav-link').forEach(link => {
+          const tId = link.dataset.topTarget;
+          if (tId === activeId) {
+            link.className = 'top-nav-link text-canvas-ink bg-canvas-surface-high border-b-2 border-canvas-accent px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider font-bold transition-all';
+          } else {
+            link.className = 'top-nav-link text-canvas-ink-muted hover:text-canvas-ink hover:bg-canvas-surface-high px-2.5 py-1 font-spec-code text-[11px] uppercase tracking-wider transition-all';
+          }
+        });
+
+        // 3. Floating Quick-Jump Items
+        document.querySelectorAll('#quick-jump-grid .drawer-jump-item').forEach(item => {
+          const tId = item.dataset.drawerTarget;
+          const badge = item.querySelector('.drawer-badge');
+          if (tId === activeId) {
+            item.className = 'drawer-jump-item border-2 border-canvas-border bg-canvas-ink text-canvas-surface px-2 py-1.5 text-[10px] uppercase flex items-center justify-between font-bold tech-shadow';
+            if (badge) badge.className = 'drawer-badge text-[9px] bg-canvas-accent text-black font-bold px-1';
+          } else {
+            item.className = 'drawer-jump-item border border-canvas-border bg-canvas-surface-low hover:bg-canvas-accent hover:text-black px-2 py-1.5 text-[10px] uppercase text-canvas-ink flex items-center justify-between';
+            if (badge) badge.className = 'drawer-badge text-[9px] text-canvas-accent';
+          }
+        });
+
+        const drawerBadge = document.getElementById('drawer-current-badge');
+        if (drawerBadge) drawerBadge.textContent = 'CH ' + chData.num;
+
+        const quickJumpTitle = document.getElementById('quick-jump-current-title');
+        if (quickJumpTitle) quickJumpTitle.textContent = chData.title;
+
+        const trackingStatus = document.getElementById('tracking-status-text');
+        if (trackingStatus) trackingStatus.textContent = 'LOCKED CH-' + chData.num;
+      }
+
+      function onScroll() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const scrollPos = window.scrollY + 160;
+        let currentId = chapters[0].id;
+
+        sections.forEach(sec => {
+          const top = sec.offsetTop;
+          if (scrollPos >= top) {
+            currentId = sec.getAttribute('id');
+          }
+        });
+
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 60) {
+          currentId = 'ch-05';
+        }
+        setActiveChapter(currentId);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    /* ========================================================================
+       4. SCROLL REVEALS & GAUGES
+       ======================================================================== */
+    (function initReveals() {
+      const rvElements = document.querySelectorAll('.rv');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        rvElements.forEach(el => io.observe(el));
+      } else {
+        rvElements.forEach(el => el.classList.add('in'));
+      }
+    })();
+
+    /* ========================================================================
+       5. THEME SWITCHER (PAPER -> CYBER HUD -> AMBER CRT)
+       ======================================================================== */
+    (function initThemes() {
+      const themes = ['paper', 'cyber', 'amber'];
+      let currentIdx = 0;
+      const htmlEl = document.documentElement;
+      const themeBtn = document.getElementById('theme-cycle-btn');
+      const themeLabel = document.getElementById('theme-btn-label');
+
+      function applyTheme(name) {
+        htmlEl.classList.remove('theme-cyber', 'theme-amber');
+        if (name === 'cyber') htmlEl.classList.add('theme-cyber');
+        if (name === 'amber') htmlEl.classList.add('theme-amber');
+        themeLabel.textContent = name.toUpperCase();
+        playSound('beep');
+      }
+
+      themeBtn.addEventListener('click', () => {
+        currentIdx = (currentIdx + 1) % themes.length;
+        applyTheme(themes[currentIdx]);
+      });
+      window.setTheme = applyTheme;
+    })();
+
+    /* ========================================================================
+       6. BLUEPRINT CROSSHAIR MOUSE TRACKER
+       ======================================================================== */
+    (function initCrosshair() {
+      const crosshair = document.getElementById('blueprint-crosshair');
+      const coords = document.getElementById('crosshair-coords');
+      if (!crosshair || !coords) return;
+
+      window.addEventListener('mousemove', (e) => {
+        crosshair.style.left = e.clientX + 'px';
+        crosshair.style.top = e.clientY + 'px';
+        coords.textContent = `X: ${String(e.clientX).padStart(4, '0')} | Y: ${String(e.clientY).padStart(4, '0')}`;
+      });
+    })();
+
+    /* ========================================================================
+       7. SYSTEM CLOCK TICKER
+       ======================================================================== */
+    (function initClock() {
+      const clockEl = document.getElementById('system-clock');
+      function tick() {
+        const now = new Date();
+        if (clockEl) {
+          clockEl.textContent = 'UTC: ' + now.toUTCString().slice(17, 25) + ' [ISB: ' + 
+            now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour12: false }) + ']';
+        }
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    /* ========================================================================
+       8. BILL OF MATERIALS (BOM) FILTER & COMPONENT INSPECTOR
+       ======================================================================== */
+    (function initBOM() {
+      const filterBtns = document.querySelectorAll('.bom-filter-btn');
+      const items = document.querySelectorAll('.bom-item');
+      const dsPlate = document.getElementById('datasheet-plate');
+      const dsTitle = document.getElementById('ds-title');
+      const dsDesc = document.getElementById('ds-desc');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active', 'bg-canvas-ink', 'text-canvas-surface', 'font-bold'));
+          btn.classList.add('active', 'bg-canvas-ink', 'text-canvas-surface', 'font-bold');
+          const filter = btn.dataset.filter;
+
+          items.forEach(item => {
+            const cat = item.dataset.category;
+            if (filter === 'all' || cat === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+          playSound('click');
+        });
+      });
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          const skill = item.dataset.skill;
+          const spec = item.dataset.spec;
+          dsTitle.textContent = 'COMPONENT DATASHEET // ' + skill.toUpperCase();
+          dsDesc.textContent = spec;
+          dsPlate.classList.remove('hidden');
+          dsPlate.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          playSound('beep');
+        });
+      });
+    })();
+
+    /* ========================================================================
+       9. SEHATHUB INTERACTIVE ROLE SIMULATOR
+       ======================================================================== */
+    (function initSehatHubTabs() {
+      const tabs = document.querySelectorAll('.sh-tab');
+      const panels = {
+        cust: document.getElementById('sh-panel-cust'),
+        pharm: document.getElementById('sh-panel-pharm'),
+        admin: document.getElementById('sh-panel-admin'),
+        ai: document.getElementById('sh-panel-ai')
+      };
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.className = 'sh-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black');
+          tab.className = 'sh-tab active p-1 border border-canvas-border bg-canvas-ink text-canvas-surface font-bold';
+          const tId = tab.dataset.tab;
+          Object.keys(panels).forEach(k => {
+            if (panels[k]) panels[k].classList.toggle('hidden', k !== tId);
+          });
+          playSound('click');
+        });
+      });
+    })();
+
+    /* ========================================================================
+       10. AURA RESTAURANT INTERACTIVE SIMULATOR (TABLE COLLISION & CART)
+       ======================================================================== */
+    (function initAuraTabs() {
+      const tabs = document.querySelectorAll('.aura-tab');
+      const panels = {
+        tables: document.getElementById('aura-panel-tables'),
+        cart: document.getElementById('aura-panel-cart'),
+        jwt: document.getElementById('aura-panel-jwt')
+      };
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.className = 'aura-tab p-1 border border-canvas-border bg-canvas-surface-high text-canvas-ink hover:bg-canvas-accent hover:text-black');
+          tab.className = 'aura-tab active p-1 border border-canvas-border bg-canvas-ink text-canvas-surface font-bold';
+          const tId = tab.dataset.tab;
+          Object.keys(panels).forEach(k => {
+            if (panels[k]) panels[k].classList.toggle('hidden', k !== tId);
+          });
+          playSound('click');
+        });
+      });
+    })();
+
+    window.bookTable = function(num, btn) {
+      const alertMsg = document.getElementById('table-alert-msg');
+      if (num === 2) {
+        alertMsg.textContent = 'ERROR 409: TABLE 02 ALREADY RESERVED AT 20:00! COLLISION BLOCKED.';
+        alertMsg.className = 'text-[10px] text-red-500 font-bold text-center mt-1 animate-pulse';
+        playSound('beep');
+      } else {
+        alertMsg.textContent = `SUCCESS: TABLE 0${num} RESERVED FOR PARTY OF 2 AT 20:00!`;
+        alertMsg.className = 'text-[10px] text-emerald-600 font-bold text-center mt-1';
+        btn.classList.add('bg-emerald-600', 'text-white');
+        btn.innerHTML = `TBL 0${num}<br><span class="text-[8px]">[YOURS]</span>`;
+        playSound('beep');
+      }
+    };
+
+    window.applyPromo = function() {
+      const code = document.getElementById('aura-promo-input').value.trim().toUpperCase();
+      const status = document.getElementById('promo-status');
+      if (code === 'OBAID20' || code === 'OBAID2026') {
+        status.textContent = 'PROMO CODE APPLIED: 20% DISCOUNT AUTHORIZED (-Rs. 960) [SAMPLE]';
+        status.className = 'text-[9px] text-emerald-600 font-bold mt-1';
+        playSound('beep');
+      } else {
+        status.textContent = 'PROMO CODE INVALID. TRY: OBAID20';
+        status.className = 'text-[9px] text-red-500 font-bold mt-1';
+        playSound('click');
+      }
+    };
+
+    /* ========================================================================
+       11. INTERACTIVE CRT DIAGNOSTIC CLI TERMINAL
+       ======================================================================== */
+    const terminalOverlay = document.getElementById('terminal-overlay');
+    const openTerminalBtn = document.getElementById('open-terminal-btn');
+    const terminalForm = document.getElementById('terminal-form');
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalScreen = document.getElementById('terminal-screen');
+
+    function openTerminal() {
+      terminalOverlay.classList.add('open');
+      terminalInput.focus();
+      playSound('beep');
+    }
+    function closeTerminal() {
+      terminalOverlay.classList.remove('open');
+      playSound('click');
+    }
+    openTerminalBtn.addEventListener('click', openTerminal);
+
+    // Escape shortcut
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && terminalOverlay.classList.contains('open')) {
+        closeTerminal();
+      }
+      if (e.key === '`' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+        openTerminal();
+      }
+    });
+
+    const terminalCommands = {
+      help: () => `
+COMMAND DIRECTORY:
+  bio        - Operator background &amp; pharmacy-to-code trajectory
+  skills     - Subsystem parts telemetry (BOM)
+  projects   - Engineered software modules (SehatHub, AURA)
+  resume     - Fetch official PDF curriculum vitae
+  contact    - Packet transmission addresses &amp; channels
+  explode    - 3D mechanical chassis exploded view
+  assemble   - Reassemble 3D mechanical chassis
+  theme &lt;paper|cyber|amber&gt; - Switch active visual HUD
+  clear      - Clear terminal screen buffer
+  whoami     - Identity check
+`,
+      bio: () => `
+OPERATOR PROFILE:
+  Name: Syed Obaid Ali
+  Station: Islamabad, Pakistan
+  Education: BS Computer Science, Abasyn University (5th Sem)
+  Trajectory: 8 Years in Pharmacies -> Software Development.
+  Specialty: Building dependable systems informed by direct domain operations.
+`,
+      skills: () => `
+CALIBRATED BOM TELEMETRY:
+  [HTML/CSS]     [███████████████░░░░░] 75% - Core UI
+  [MySQL]        [██████████████░░░░░░] 70% - RDBMS
+  [Python]       [█████████████░░░░░░░] 68% - Logic Engine
+  [Flask]        [█████████████░░░░░░░] 65% - Web Framework
+  [C++]          [████████████░░░░░░░░] 60% - Low-Level &amp; DSA
+  [Oracle]       [███████████░░░░░░░░░] 55% - Relational DB
+  [Express.js]   [███████████░░░░░░░░░] 55% - API Runtime
+  [MongoDB]      [█████████░░░░░░░░░░░] 45% - NoSQL [Accelerating]
+  [React Native] [████████░░░░░░░░░░░░] 40% - Mobile Hybrid [Accelerating]
+`,
+      projects: () => `
+PROJECTS:
+  01. SehatHub (Online Pharmacy System) - Flask, MySQL, Tailwind, Chart.js
+      GitHub: https://github.com/obaids093-prog/SehatHub-Pharmacy
+  02. AURA Restaurant App (Reservation Engine) - React Native, Express, MongoDB
+      GitHub: https://github.com/obaids093-prog/Restaurant-app-mvp
+`,
+      resume: () => {
+        window.open('assets/Syed_Obaid_Ali_Resume.pdf', '_blank');
+        return 'Dispatching resume download in new browser buffer...';
+      },
+      contact: () => `
+DIRECT PACKET ROUTES:
+  Email:    obaids093@gmail.com
+  GitHub:   github.com/obaids093-prog
+  LinkedIn: linkedin.com/in/syed-obaid-ali-5400b836b
+`,
+      explode: () => {
+        if (window.explodeRobot) window.explodeRobot();
+        return 'Executing chassis disengage sequence... [3D EXPLODED]';
+      },
+      assemble: () => {
+        if (window.assembleRobot) window.assembleRobot();
+        return 'Reassembling chassis... [3D MAGNETIC LOCK ACQUIRED]';
+      },
+      whoami: () => 'Guest Operator authenticated on OBAID-01 diagnostic terminal.',
+      clear: () => {
+        terminalScreen.innerHTML = '';
+        return '';
+      }
+    };
+
+    terminalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const raw = terminalInput.value.trim();
+      if (!raw) return;
+      terminalInput.value = '';
+
+      // Print command safely with textContent
+      const cmdLine = document.createElement('div');
+      const cmdSpan = document.createElement('span');
+      cmdSpan.className = 'text-white font-bold';
+      cmdSpan.textContent = `>_ ${raw}`;
+      cmdLine.appendChild(cmdSpan);
+      terminalScreen.appendChild(cmdLine);
+
+      const partsCmd = raw.toLowerCase().split(' ');
+      const baseCmd = partsCmd[0];
+      const arg = partsCmd[1];
+
+      const resLine = document.createElement('div');
+      resLine.className = 'text-[#00f0ff]';
+
+      if (baseCmd === 'theme') {
+        if (['paper', 'cyber', 'amber'].includes(arg)) {
+          window.setTheme(arg);
+          resLine.textContent = `Visual theme changed to: ${arg.toUpperCase()}`;
+        } else {
+          resLine.textContent = 'Usage: theme paper | theme cyber | theme amber';
+        }
+      } else if (terminalCommands[baseCmd]) {
+        const out = terminalCommands[baseCmd]();
+        if (out) resLine.innerHTML = out.replaceAll('\n', '<br/>');
+      } else {
+        resLine.textContent = `Command '${raw}' unverified. Type 'help' for instructions.`;
+      }
+
+      terminalScreen.appendChild(resLine);
+      terminalScreen.scrollTop = terminalScreen.scrollHeight;
+      playSound('beep');
+    });
+
+    /* ========================================================================
+       12. CONTACT FORM DISPATCH & DIRECT SECURE TRANSMISSION
+       ======================================================================== */
+    const contactForm = document.getElementById('contact-form');
+    const dispatchBar = document.getElementById('dispatch-progress-bar');
+    const dispatchFill = document.getElementById('dispatch-progress-fill');
+    const dispatchStatus = document.getElementById('dispatch-status-note');
+    const submitBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+
+    if (contactForm) {
+      let isSubmitting = false;
+
+      contactForm.addEventListener('submit', (e) => {
+        if (isSubmitting) return;
+        e.preventDefault();
+
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const msg = document.getElementById('form-message').value.trim();
+
+        if (!name || !email || !msg) return;
+
+        isSubmitting = true;
+        if (submitBtn) submitBtn.disabled = true;
+        dispatchBar.classList.remove('hidden');
+        dispatchFill.style.width = '35%';
+        dispatchStatus.textContent = 'ENCRYPTING PACKET & ALLOCATING TELEMETRY BUFFER...';
+        playSound('beep');
+
+        setTimeout(() => {
+          dispatchFill.style.width = '75%';
+          dispatchStatus.textContent = 'TRANSMITTING VIA DIRECT RELAY TO obaids093@gmail.com...';
+          playSound('beep');
+        }, 400);
+
+        setTimeout(() => {
+          dispatchFill.style.width = '100%';
+          playSound('assemble');
+
+          if (window.location.protocol === 'file:') {
+            // Local file:// protocol: FormSubmit blocks local files to prevent spam.
+            // Use mailto for local preview and inform the user.
+            dispatchStatus.textContent = 'LOCAL PREVIEW (FILE://): DISPATCHING VIA EMAIL CLIENT...';
+            dispatchStatus.classList.add('text-canvas-accent');
+
+            const subject = encodeURIComponent(`Portfolio Dispatch from ${name}`);
+            const body = encodeURIComponent(`Operator Name: ${name}\nReturn Route: ${email}\n\nPayload:\n${msg}`);
+            window.location.href = `mailto:obaids093@gmail.com?subject=${subject}&body=${body}`;
+
+            setTimeout(() => {
+              contactForm.reset();
+              dispatchBar.classList.add('hidden');
+              dispatchFill.style.width = '0%';
+              dispatchStatus.textContent = 'STATUS: DISPATCH COMPLETE. BUFFER RESET.';
+              dispatchStatus.classList.remove('text-canvas-accent');
+              isSubmitting = false;
+              if (submitBtn) submitBtn.disabled = false;
+            }, 3500);
+          } else {
+            // Live Web Server (GitHub Pages, Netlify, HTTP/HTTPS):
+            // Deliver directly to inbox via FormSubmit relay without opening email app!
+            dispatchStatus.textContent = 'TRANSMISSION DISPATCHED TO INBOX!';
+            dispatchStatus.classList.add('text-canvas-accent');
+            HTMLFormElement.prototype.submit.call(contactForm);
+          }
+        }, 900);
+      });
+    }
+  </script>
+
+</body>
+</html>
